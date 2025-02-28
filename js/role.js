@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Object.keys(roleAccess).forEach((contentId) => {
       const contentElement = document.getElementById(contentId);
       if (contentElement && !roleAccess[contentId].includes(role)) {
-        contentElement.style.display = 'none'; // Hide content for unauthorized roles
+        contentElement.style.display = 'none'; 
       }
     });
   });
