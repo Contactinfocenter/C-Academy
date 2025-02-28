@@ -1,0 +1,449 @@
+<DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+     <title>TeamSync</title>
+   <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, 
+        body {
+            font-family: "Montserrat", sans-serif;
+            background-color: #fff;
+            color: #333;
+            overflow: hidden;
+        }
+        .hero {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } 
+        
+        .hero-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }        
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .revealers{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            z-index: 2;
+        }
+
+        .revealer{
+            flex: 1;
+            width: 100%;
+            background-color: #fff;
+            clip-path: polygon(0% 0%, 100% 0%,100% 100%, 0% 100%);
+            will-change: clip-path;
+        }
+
+        .images{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            transform-origin: center center;
+            will-change: transform;
+        }
+
+        .img{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.5);
+            width: 100%;
+            height: 100%;
+            visibility: visible;
+            will-change: transform;
+            opacity: 0;
+        }
+
+        .img:first-child {
+            opacity: 1;
+        }
+
+        .images.stacked-container {
+            position: fixed;
+            left: 2em;
+            bottom: 2em;
+            width: auto;
+            height: auto;
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            gap: 1em;
+            transform: none;
+            will-change: transform;
+        }
+
+        .img.stacked {
+            position: relative;
+            width: 150px;
+            height: 100px;
+            transform: none;
+            top: auto;
+            left: auto;
+            opacity: 1;
+            will-change: transform;
+        }
+
+        .site-logo {
+            position: absolute;
+            top: 2em;
+            left: 2em;
+            display: flex;
+            gap: 1em;
+        }
+
+        .site-logo h1 {
+            color: #222; 
+            font-size: clamp(2rem, 5vw, 6rem); 
+            font-weight: 500; 
+            line-height: 1.2; 
+            letter-spacing: -0.005em;
+        }
+
+        .site-logo h1 sup {
+            position: absolute;
+            top: -0.125em;
+            font-size: 2rem;
+        }
+
+        .nav {
+            position: absolute;
+            right: 0;
+            width: 50%;
+            padding: 2em;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1em;
+            z-index: 3;
+        }
+
+        .nav .nav-item p {
+            position: relative;
+        }
+
+
+
+        .nav .nav-item p {
+            position: relative;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer; /* Make it clear that it is clickable */
+        }
+
+        .cover-img {
+            position: absolute;
+            right: 2em;
+            bottom: 2em;
+            width: 40%;
+            height: 60%;
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+        }
+
+        .cover-img img {
+            filter: saturate(0);
+        }
+
+        .site-info {
+            position: absolute;
+            bottom: 2em;
+            left: -1em;
+            transform: translateX(-100px); /* Adjust this value to shift left */
+            width: 65%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .site-info .row {
+            display: flex;
+            gap: 2em;
+        }
+
+        .site-info .row .col {
+            flex: 1;
+        }
+
+        .site-info h2 {
+            font-size: 22px;
+            font-weight: 300;
+            line-height: 1.3;
+        }
+
+        .site-info p {
+            font-size: 16px;
+            font-weight: 300;
+            color: #444;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+
+        .site-info .row:nth-child(2) .col:nth-child(2) {
+            display: flex;
+        }
+
+        .address, 
+        .socials {
+            flex: 1;
+        }
+
+        .address p, 
+        .socials p {
+            line-height: 1.25;
+        }
+
+        .word, 
+        .nav-item, 
+        .line, .icon-facebook {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .word h1, 
+        .nav-item p, 
+        .site-info h2, 
+        .line span, 
+        .line p, .icon-facebook {
+            position: relative;
+            will-change: transform;
+        }
+
+        .site-info h2, 
+        .line span {
+            display: flex;
+            transform: translateY(100%);
+        }
+
+        .word h1, 
+        .nav-item p, 
+        .line p {
+            transform: translateY(100%);
+        }
+
+        .socials .line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .socials i, 
+        .socials span {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .socials i:hover,
+        .socials span:hover {
+            color: #007bff; /* Change to your theme color */
+        }
+    </style>
+    </head>
+    <body>
+        <div class="hero">
+            <div class="revealers">
+                <div class="revealer r-1"></div> 
+                <div class="revealer r-2"></div>
+            </div>
+            <div class="images">
+                <div class="img"><img src="assets/images/team_1.png" alt=""></div>
+                <div class="img"><img src="assets/images/hero_2.jpg" alt=""></div>
+                <div class="img"><img src="assets/images/hero_3.jpg" alt=""></div>
+                <div class="img"><img src="assets/images/hero_4.jpg" alt=""></div>
+                <div class="img"><img src="assets/images/hero_5.jpg" alt=""></div>
+                <div class="img main"><img src="assets/images/T.png" alt=""></div>
+                <div class="img main"><img src="assets/images/N.png" alt=""></div>
+                <div class="img main"><img src="assets/images/M.png" alt=""></div>
+
+            </div> 
+
+            <div class="hero-content">
+                <div class="site-logo">
+                    <div class="word"><h1>TeamSync</h1></div>
+                </div>
+
+                <div class="nav">
+                    <div class="nav-item"><a href="index.html"><p>About</p></a></div>
+                    <div class="nav-item"><a href="#work"><p>Work</p></a></div>
+                    <div class="nav-item"><a href="#journal"><p>Journal</p></a></div>
+                    <div class="nav-item"><a href="#contact"><p>Contact</p></a></div>
+                    <div class="nav-item"><a href="#services"><p>Services</p></a></div>
+                </div>
+                <div class="cover-img">
+                    <img src="assets/images/team_1.png" alt=""/>
+                </div>
+                <div class="site-info">
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <h2>
+                                We try and sort out any issues before you’re even aware of them. 
+                                But if you ever need us, there are a bunch of ways you can get in touch.
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col"></div>
+                        <div class="col">
+                            <div class="address">
+                                <div class="line"><p>Corporate Office</p></div>
+                                <div class="line"><p>Highway Homes,</p></div>
+                                <div class="line"><p>KA-32/6, Shahjadpur, Pragoti Sharani,</p></div>
+                                <div class="line"><p>Gulshan, Dhaka 1212.</p></div>
+                                
+                                <div class="line"><span class="icon-facebook"></span> <p></p></div>
+                                <div class="line"><span class="icon-instagram"></span> <p></p></div>
+                            </div>
+                            <div class="socials">
+
+                            </div>                                                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/CustomEase.min.js"></script> 
+    <script src="https://unpkg.com/split-type"></script>
+    <script>
+document.querySelectorAll('.nav-item a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith("#")) {
+            gsap.to(window, { duration: 1, scrollTo: targetId, ease: "power2.inOut" });
+        } else {
+            window.location.href = targetId; // For external/internal page links
+        }
+    });
+});
+
+    </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        CustomEase.create("hop", "M0,0 C0.355,0.022 0.448,0.079 0.5,0.5 0.542,0.846 0.615,1 1,1 ");
+        CustomEase.create("hop2", "M0,0 C0.355,0.022 0.448,0.079 0.5,0.5 0.542,0.846 0.615,1 1,1 ");
+    
+        const splitH2 = new SplitType(".site-info h2", { types: "lines" });
+    
+        splitH2.lines.forEach((line) => {
+            const text = line.textContent;
+            const wrapper = document.createElement("div");
+            wrapper.className = "line";
+            const span = document.createElement("span");
+            span.textContent = text;
+            wrapper.appendChild(span);
+            line.parentNode.replaceChild(wrapper, line);
+        });
+    
+        const mainTl = gsap.timeline();
+        const revealerTl = gsap.timeline();
+        const scaleTl = gsap.timeline();
+    
+        revealerTl.to(".r-1", {
+            clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+            duration: 1.5,
+            ease: "hop"
+        }).to(".r-2", {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            duration: 1.5,
+            ease: "hop"
+        }, "<");
+    
+        scaleTl.to(".img:first-child", {
+            scale: 1,
+            duration: 2,
+            ease: "power4.inOut"
+        });
+    
+        const images = document.querySelectorAll(".img:not(:first-child)");
+    
+        images.forEach((img, index) => {
+            scaleTl.to(img, {
+                opacity: 1,
+                scale: 1,
+                duration: 1.25,
+                ease: "power3.out"
+            }, ">-0.5");
+        });
+    
+        mainTl
+            .add(revealerTl)
+            .add(scaleTl, "-=1.25")
+            .add(() => {
+                document.querySelectorAll(".img:not(.main)").forEach((img) => img.remove());
+    
+                const state = Flip.getState(".main");
+                const imagesContainer = document.querySelector(".images");
+                imagesContainer.classList.add("stacked-container");
+    
+                document.querySelectorAll(".main").forEach((img, i) => {
+                    img.classList.add("stacked");
+                    img.style.order = i;
+                    gsap.set(".img.stacked", {
+                        clearProps: "transform, top, left",
+                    });
+                });
+    
+                return Flip.from(state, {
+                    duration: 2,
+                    ease: "hop",
+                    absolute: true,
+                    stagger: {
+                        amount: -0.3,
+                    },
+                });
+            })
+            .to(".word h1, .nav-item p, .line p, .site-info h2, .line span", {
+                y: 0,
+                duration: 3,
+                ease: "hop2",
+                stagger: 0.1,
+                delay: 1.25,
+            })
+            .to(".cover-img", {
+                clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+                duration: 2,
+                ease: "hop2",
+                delay: -1.75,
+            })
+            .add(() => {
+                // Enable scrolling after animations
+                document.body.style.overflow = "auto";
+            });
+    });
+    </script>
+    
+    </body>
+    </html>

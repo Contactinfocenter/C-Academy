@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+    <link href="https://cdn.plyr.io/3.4.6/plyr.css" rel="stylesheet">
+    <style>
+.col-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-6 img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain; /* Prevents distortion */
+}
+.text-muted {
+        color: #6c757d;
+        font-size: 0.9em;
+    }
+    .highlight {
+        color: #33cc33;
+        font-weight: bold;
+    }
+    .error {
+        color: #ff0000;
+        font-weight: bold;
+    }
+        .note {
+        background-color: #fffbcc;
+        padding: 10px;
+        border-left: 4px solid #ffd700;
+        margin: 10px 0;
+        }
+        .example {
+        background-color: #e7f3fe;
+        padding: 10px;
+        border-left: 4px solid #2196f3;
+        margin: 10px 0;
+       }
+       .ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            padding-left: 20px;
+        }
+        .li {
+            margin-bottom: 10px;
+        }
+
+  .video {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.plyr {
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+.video-box {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 400px;
+  position: relative;
+}
+
+.flex-parent {
+  display: flex;
+  min-height: 0px;
+}
+.jc-center {
+  justify-content: center !important;
+}
+
+.setp {
+      background: #f4f4f4;
+      padding: 10px;
+}
+
+.accordion .card {
+                background: none;
+                border: none;
+        }
+        .accordion .card .card-header {
+                background: none;
+                border: none;
+                padding: .4rem 1rem;
+                font-family: "Roboto", sans-serif;
+        }
+        .accordion .card-header h2 span {
+                float: left;
+                margin-top: 10px;
+        }
+        .accordion .card-header .btn {
+                color: #2f2f31;
+                font-size: 1.04rem;
+                text-align: left;
+                position: relative;
+                font-weight: 500;
+                padding-left: 2rem;
+        }
+        .accordion .card-header i {
+                font-size: 1.2rem;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                top: 9px;
+        }
+        .accordion .card-header .btn:hover {
+                color: #ff8300;
+        }
+        .accordion .card-body {
+                color: #324353;
+                padding: 0.5rem 3rem;
+        }
+        .page-title {
+                margin: 3rem 0 3rem 1rem;
+                font-family: "Arial", sans-serif;
+                position: relative;
+        }
+        .page-title::after {
+                content: "";
+                width: 80px;
+                position: absolute;
+                height: 3px;
+                border-radius: 1px;
+                background: #000;
+                left: 0;
+                bottom: -15px;
+        }
+        .accordion .highlight .btn {
+                color: #000;
+        }
+        .accordion .highlight i {
+                transform: rotate(180deg);
+        }
+</style>
+
+
+    <title>C-Academy || Tutorials</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">C-Academy</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link active">Tutorial</a></li>
+            <!--  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>-->
+                  <li><a href="admin.html" class="nav-link">Admin</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+      <section class="section">
+        <div class="container">
+          <div class="row">
+            <!-- Main Content -->
+            <div class="col-xl-9 col-md-6">
+
+              <div class="row mt-3 w-100">
+                <!-- col-2 Section (Left Column) -->
+                <div class="col-2 d-flex justify-content-center align-items-center"></div>
+              
+                <!-- col-8 Section (Center Column) -->
+                <div class="col-8 d-flex justify-content-center align-items-center">
+                                <div class="video">
+                              <video controls crossorigin playsinline poster="assets/img/12-steve-2.1.png" id="player">
+                                           <!-- Video files -->
+                                           <source src="https://res.cloudinary.com/ds7ppx4l8/video/upload/v1648365604/samples/V-SOL_ONU_lmlcfr.mp4" type="video/mp4" size="576">
+                                           <source src="https://res.cloudinary.com/ds7ppx4l8/video/upload/v1648365604/samples/V-SOL_ONU_lmlcfr.mp4" type="video/mp4" size="720">
+                                           <source src="https://res.cloudinary.com/ds7ppx4l8/video/upload/v1648365604/samples/V-SOL_ONU_lmlcfr.mp4" type="video/mp4" size="1080">
+                                           <source src="https://res.cloudinary.com/ds7ppx4l8/video/upload/v1648365604/samples/V-SOL_ONU_lmlcfr.mp4" type="video/mp4" size="1440">
+                                   
+                           
+                                           <!-- Caption files -->
+                                           <track kind="captions" label="English" srclang="en" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+                                               default>
+                                           <track kind="captions" label="Français" srclang="fr" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.fr.vtt">
+                           
+                                           <!-- Fallback for browsers that don't support the <video> element -->
+                                           <a href="https://cxv.s3.ir-thr-at1.arvanstorage.com/Team_work.webm" download>Download</a>
+                              </video>
+                             <div class="flex-parent jc-center">
+                                <div class="actions">
+                                  <button type="button_p" class="btn js-play">Play</button>
+                                  <button type="button" class="btn js-pause">Pause</button>
+                                  <button type="button" class="btn js-stop">Stop</button>
+                                  <button type="button" class="btn js-rewind">Rewind</button>
+                                  <button type="button" class="btn js-forward">Forward</button>
+                               </div> 
+                             </div>
+                           </div>
+                </div>
+              
+                <!-- col-2 Section (Right Column) -->
+                <div class="col-2 d-flex justify-content-center align-items-center"></div>
+              </div>
+
+
+            <div class="content-section" id="devices"></div>
+              <hr>
+              <div style="margin-top: 40px;"></div>
+              <div class="content-section"id="no-internet"></div>
+              
+            <hr>
+            
+            <div style="margin-top: 40px;"></div>
+            <div class="content-section" id="slow-speed"></div>
+  
+            <hr>
+            <div style="margin-top: 40px;"></div> 
+            <div class="content-section" id="wifi-hut"></div>
+            <hr> 
+            <div style="margin-top: 40px;"></div> 
+            <div class="content-section" id="ip-phone">
+              <h5 class="page-title">IP Phone (FAQs)</h5>
+
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="clearfix mb-0">
+                      <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="icon-arrow-circle-down"></i>
+                        What is IP phone?
+                      </a>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="card-body">Ans: IP telephony (Internet Protocol telephony) is a general term
+                       for the technologies that use the Internet Protocol's packet-switched connections to 
+                       exchange voice, fax, and other forms of information that have traditionally been carried 
+                       over the dedicated circuit-switched connections of the public switched telephone network (PSTN). 
+                       Using the Internet, calls travel as packets of data on shared lines, avoiding the tolls of the PSTN.
+                    </div>   
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <i class="icon-arrow-circle-down"></i>
+                        Do I need to purchase other device for IP Phone?
+                      </a>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Ans: you can use it as soft phone so no need to purchase IP Phone set, 
+                      you can use it with your existing mobile handset by downloading Apps (Zopier/ PortSip) 
+                      from play store/ apple store, for laptop/ desktop you can download Desktop Softphone: pangolin. 
+                      If you want to use other IP phone set you can.
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                      <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="icon-arrow-circle-down"></i>
+                        How can I avail?
+                      </a>
+                    </h2>
+                  </div>
+                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                      Ans: You can take our internet (<b>30 Mbps Unlimited_CTG @1599 for CTG</b> client and <b>
+                        30 Mbps Unlimited_IPTV @2099 for Dhaka</b> client) connection with IP phone service 
+                        without any extra service fee (you will get 200 free munities every months) applicable only <b>
+                          new connection</b>. Or you can take it individually where service charge is applicable 
+                          (***Condition applied).
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>          
+            </div>
+      
+            <!-- Sidebar -->
+            <div class="col-xl-3 col-md-6">
+              <img src="assets/images/tutorial.avif" class="img-fluid" alt="Offer">
+              <aside class="sidebar">
+                <h6>On this page</h6>
+                <ul class="sidebar-menu">
+                  <li><a href="#devices" class="active">Device</a></li>
+                  <li><a href="#no-internet">No Internet</a></li>
+                  <li><a href="#slow-speed">Slow Speed</a></li>
+                  <li><a href="#wifi-hut">Wifi Hut</a></li>
+                  <li><a href="#ip-phone">IP Phone</a></li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        &copy; 2025 C-Academy. All rights reserved.
+      </footer>   
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/tutorials.js"></script>
+    <script src="https://cdn.plyr.io/3.4.6/plyr.js"></script>
+    <script src="js/video.js"></script>
+    <script src="js/offer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".sidebar-menu a");
+        const sections = document.querySelectorAll(".content-section");
+      
+        function highlightMenu() {
+          let scrollPosition = window.scrollY + 100; // Adjust for header offset
+      
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+      
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              const id = section.getAttribute("id");
+      
+              links.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        }
+      
+        window.addEventListener("scroll", highlightMenu);
+        highlightMenu(); // Run on page load
+      
+        // Smooth scrolling for sidebar links
+        links.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute("href").slice(1);
+            const targetSection = document.getElementById(targetId);
+      
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - 50, // Adjust for header offset
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+
+<script>
+  $(document).ready(function(){
+          // Add minus icon for collapse element which is open by default
+          $(".collapse.show").each(function(){
+                  $(this).prev(".card-header").addClass("highlight");
+          });
+          
+          // Highlight open collapsed element 
+          $(".card-header .btn").click(function(){
+                  $(".card-header").not($(this).parents()).removeClass("highlight");
+                  $(this).parents(".card-header").toggleClass("highlight");
+          });
+  });
+</script>
+ 
+  
+    
+  </body>
+</html>

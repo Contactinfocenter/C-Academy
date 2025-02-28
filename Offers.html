@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+      .form-group {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 15px;
+      }
+      label {
+          flex: 1;
+          margin-right: 10px;
+          font-weight: bold;
+      }
+      select, input {
+          flex: 2;
+          max-width: 400px;
+          padding: 6px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 15px;
+          background-color: #d9d9d9;
+          color: #000;
+          text-align: center;
+          transition: border-color 0.3s ease, background-color 0.3s ease;
+      }
+      select:focus, input:focus {
+          border-color: #6c3483;
+          outline: none;
+          background-color: #f5edf7;
+      }
+      button {
+          display: block;
+          width: 100%;
+          max-width: 400px;
+          padding: 8px;
+          margin: 10px auto;
+          border: none;
+          border-radius: 5px;
+          background-color: #8E44AD;
+          color: white;
+          font-size: 16px;
+          font-weight: normal;
+          text-align: center;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+      button:hover {
+          background-color: #732d91;
+      }
+    </style> 
+
+    <title>C-Academy || Offers</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">C-Academy</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link active">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link">Tutorial</a></li>
+            <!--  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>-->
+                  <li><a href="admin.html" class="nav-link">Admin</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+      <section class="section">
+        <div class="container">
+          <div class="row">
+            <!-- Main Content -->
+            <div class="col-xl-9 col-md-6">
+              <div class="content-section" id="churn"></div>
+              <div class="table-responsive column-container">
+                <div id="rwd-table" class="churn_table"></div>
+              </div>
+              <div style="margin-top: 40px;"></div> 
+              <h5 class="txt-maroon" style ="text-align: center;"> Churn Calculator</h5>
+              <div style="margin-top: 40px;"></div>
+              <div class="form-group">
+                <label for="expireDate">Last Expire Date:</label>
+                <input type="text" id="expireDate" aria-label="Select the last expire date" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <select id="location" aria-label="Select the location">
+                    <option value="same">Same Location</option>
+                    <option value="diff6">Different Location (using 6 months or more)</option>
+                    <option value="diffLess6">Different Location (using less than 6 months)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="device">Device:</label>
+                <select id="device" aria-label="Select device availability">
+                    <option value="available">Device Available</option>
+                    <option value="notAvailable">Device Not Available</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="package">Choose Package:</label>
+                <select id="package" aria-label="Select the package">
+                    <option value="30Mbps_Churnback">30 Mbps Churnback @ 1299</option>
+                    <option value="40Mbps_Churnback">40 Mbps Churnback @ 1699</option>
+                    <option value="50Mbps_Churnback">50 Mbps Churnback @ 2199</option>
+                    <option value="7Mbps_City">7 Mbps City</option>
+                    <option value="10Mbps_City">10 Mbps City</option>
+                    <option value="12Mbps_City">12 Mbps City</option>
+                    <option value="15Mbps_HabiganjSylhet">15 Mbps @ 1049 (Habiganj & Sylhet)</option>
+                </select>
+            </div>
+            <button onclick="calculate()">Calculate</button>
+        
+            <h5>Result:</h5>
+            <p id="result"></p>
+            <hr>
+            <div style="margin-top: 40px;"></div> 
+  
+            <div class="content-section" id="referral"></div>
+  
+            <hr>
+  
+            <div class="content-section" id="cashback"></div>
+            <hr>
+            <div class="content-section" id="supper-saver"></div>
+            
+            </div>
+      
+            <!-- Sidebar -->
+            <div class="col-xl-3 col-md-6">
+              <img src="assets/images/offer.avif" class="img-fluid" alt="Offer">
+              <aside class="sidebar">
+                <h6>On this page</h6>
+                <ul class="sidebar-menu">
+                  <li><a href="#churn" class="active">Churn Offer</a></li>
+                  <li><a href="#referral">Referral</a></li>
+                  <li><a href="#cashback">Cashback Offer</a></li>
+                  <li><a href="#supper-saver">Supper saver</a></li>
+                </ul>
+              </aside>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        &copy; 2025 C-Academy. All rights reserved.
+      </footer>   
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script src="js/offer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll(".sidebar-menu a");
+        const sections = document.querySelectorAll(".content-section");
+      
+        function highlightMenu() {
+          let scrollPosition = window.scrollY + 100; // Adjust for header offset
+      
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+      
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+              const id = section.getAttribute("id");
+      
+              links.forEach((link) => {
+                link.classList.remove("active");
+                if (link.getAttribute("href") === `#${id}`) {
+                  link.classList.add("active");
+                }
+              });
+            }
+          });
+        }
+      
+        window.addEventListener("scroll", highlightMenu);
+        highlightMenu(); // Run on page load
+      
+        // Smooth scrolling for sidebar links
+        links.forEach((link) => {
+          link.addEventListener("click", (event) => {
+            event.preventDefault();
+            const targetId = link.getAttribute("href").slice(1);
+            const targetSection = document.getElementById(targetId);
+      
+            if (targetSection) {
+              window.scrollTo({
+                top: targetSection.offsetTop - 50, // Adjust for header offset
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+ 
+ <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      flatpickr("#expireDate", {
+          dateFormat: "Y-m-d",
+          allowInput: true,
+          defaultDate: new Date(),
+          enable: [
+              function(date) {
+                  return date < new Date(); // Only allow past dates
+              }
+          ]
+      });
+  });
+
+  function calculate() {
+      const expireDateInput = document.getElementById('expireDate').value;
+      const expireDate = new Date(expireDateInput);
+      const currentDate = new Date();
+      const location = document.getElementById('location').value;
+      const device = document.getElementById('device').value;
+      const chosenPackage = document.getElementById('package').value;
+
+      let result = '';
+
+      if (!expireDateInput) {
+          result = 'Please select the last expire date.';
+      } else {
+          const diffTime = Math.abs(currentDate - expireDate);
+          const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+          const diffMonths = diffDays / 30;
+
+          if (diffMonths < 1) {
+              result = 'Renewal must have failed for a minimum of one month.';
+          } else {
+              let payableAmount = '';
+              let decision = '';
+
+              if (location === 'same') {
+                  if (device === 'available') {
+                      payableAmount = getPackagePrice(chosenPackage);
+                      decision = 'Regular CB Process';
+                  } else {
+                      payableAmount = `${getPackagePrice(chosenPackage)} + Device Price (1000)`;
+                      decision = 'Regular CB Process';
+                  }
+              } else if (location === 'diff6') {
+                  if (device === 'available') {
+                      payableAmount = getPackagePrice(chosenPackage);
+                      decision = 'Regular CB Process';
+                  } else {
+                      payableAmount = 'New Sale';
+                      decision = 'New Sale';
+                  }
+              } else if (location === 'diffLess6') {
+                  if (device === 'available') {
+                      payableAmount = `${getPackagePrice(chosenPackage)} + Shifting Price (1000)`;
+                      decision = 'Regular CB Process';
+                  } else {
+                      payableAmount = 'New Sale';
+                      decision = 'New Sale';
+                  }
+              }
+
+              result = `Payable amount: ${payableAmount}\nDecision: ${decision}`;
+          }
+      }
+
+      document.getElementById('result').innerText = result;
+  }
+
+  function getPackagePrice(packageName) {
+      switch (packageName) {
+          case '30Mbps_Churnback':
+              return '1299';
+          case '40Mbps_Churnback':
+              return '1699';
+          case '50Mbps_Churnback':
+              return '2199';
+          case '7Mbps_City':
+          case '10Mbps_City':
+          case '12Mbps_City':
+              return 'Package price + Downgrade charge (2000)';
+          case '15Mbps_HabiganjSylhet':
+              return '1049';
+          default:
+              return '';
+      }
+  }
+</script>
+    
+  </body>
+</html>

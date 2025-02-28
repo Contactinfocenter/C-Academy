@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+<style>
+
+      .sla {
+        background-color: #FEFEFA	;
+      }
+
+caption {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+  /* Responsive Table Container */
+.team-table {
+  width: 100%;
+  overflow-x: auto; /* Enables horizontal scrolling if needed */
+}
+
+/* Table Styling */
+.team-table table {
+  width: 100%; /* Ensures full-width usage */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgb(190,190,190) !important;
+}
+td, th {
+  border: 1px solid rgb(190,190,190) !important;
+}
+/* Table Header & Cells */
+.team-table th, 
+.team-table td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Header Styling */
+.team-table th {
+  background-color: #D1D1D1;
+  font-weight: bold;
+}
+
+/* Alternating Row Colors */
+.team-table tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover Effect */
+.team-table tr:hover {
+  background-color: #f1f1f1;
+  transition: background 0.3s ease;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .team-table {
+    overflow-x: auto;
+    display: block;
+  }
+
+  .team-table table {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+
+  .team-table th, 
+  .team-table td {
+    padding: 8px;
+  }
+}
+
+/* Stacked Table for Small Screens */
+@media (max-width: 480px) {
+  .team-table table {
+    border: 0;
+  }
+
+  .team-table thead {
+    display: none; /* Hides header on small screens */
+  }
+
+  .team-table tr {
+    display: block;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+    padding: 10px;
+  }
+
+  .team-table td {
+    display: block;
+    text-align: right;
+    font-size: 0.85rem;
+    padding: 6px;
+    position: relative;
+  }
+
+  .team-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+}
+      
+            
+            
+
+
+</style>
+
+    <title>TeamSync</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">C-Academy</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link active">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link">Tutorial</a></li>
+                  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+      <section class="section sla">
+        <div class="container">
+          <p class="text-center">
+            Ensure you have a thorough understanding of the SLA (Service Level Agreement) 
+            and communicate relevant details clearly to the client as needed.
+          </p>
+          <div class="row gy-5">
+            <div class="col-xl-12 col-md-6">
+              <div id="" class="desktop_table team-table table"></div>
+            </div>
+          </div>
+        </div>
+      </section><!-- End SLA Section --> 
+
+      <section class="section sla">
+        <div class="container">
+          <div class="team-table table">
+            <p class="table-caption">Zone</p> <!-- Moved caption outside table -->
+            <table id="zone-table-1">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        </div>
+      </section>
+      <section class="section sla">
+        <div class="container">
+          <div class="team-table table">
+            <p class="table-caption">Zone</p> <!-- Moved caption outside table -->
+            <table id="zone-table-2">
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        </div>
+      </section>
+
+      
+
+ 
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script src="js/slatable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+
+  
+    
+  </body>
+</html>

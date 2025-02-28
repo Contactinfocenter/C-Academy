@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+    <link rel="stylesheet" href="css/section/flow-chart.css">
+
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css'>
+          <!-- DataTables CSS -->
+          <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+          <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
+    <style>
+ @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+ @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet"');
+      :root {
+        --color-bg-0: #d81b60;
+        --color-bg-1: deepskyblue;
+        --color-bg-2: tomato;
+        --color-bg-3: #69f0ae;
+        --color-bg-4: cyan;
+        --color-bg-5: salmon;
+        --color-bg-6: #ffcaa4;
+        --color-bg-7: #c2e5df;
+        --color-bg-8: #ffb74d;
+        --font-title: "Playfair Display", serif;
+        --radius: 12px;
+      }
+      
+      .s-lider {
+        padding: 60px 20px;
+        position: relative;
+        height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      
+      .l-title {
+        margin-bottom: 40px;
+        font-size: 64px;
+        font-family: var(--font-title);
+        font-weight: 400;
+        text-align: center;
+      }
+      
+      .swiper {
+        width: 100%;
+        height: 400px;
+        max-width: 1024px;
+      }
+      .swiper .bg-item {
+        height: 100%;
+        aspect-ratio: 1/1;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: var(--radius);
+        background-color: var(--color-bg-0);
+      }
+      [data-sld="0"] .swiper .bg-item {
+        background-color: var(--color-bg-0);
+      }
+      [data-sld="1"] .swiper .bg-item {
+        background-color: var(--color-bg-1);
+      }
+      [data-sld="2"] .swiper .bg-item {
+        background-color: var(--color-bg-2);
+      }
+      [data-sld="3"] .swiper .bg-item {
+        background-color: var(--color-bg-3);
+      }
+      [data-sld="4"] .swiper .bg-item {
+        background-color: var(--color-bg-4);
+      }
+      [data-sld="5"] .swiper .bg-item {
+        background-color: var(--color-bg-5);
+      }
+      [data-sld="6"] .swiper .bg-item {
+        background-color: var(--color-bg-6);
+      }
+      [data-sld="7"] .swiper .bg-item {
+        background-color: var(--color-bg-7);
+      }
+      [data-sld="8"] .swiper .bg-item {
+        background-color: var(--color-bg-8);
+      }
+      
+      .swiper-slide {
+        background: transparent;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .swiper-slide-active .c-card {
+        opacity: 1;
+      }
+      
+      .c-card {
+        opacity: 0.6;
+      }
+      .c-card figure {
+        height: 100%;
+        display: grid;
+        place-items: center;
+      }
+      .c-card figure img {
+        display: block;
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+      }
+      </style>    
+
+  
+
+    <title>TeamSync</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">TeamSync</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">Home</a></li>
+                  <li><a href="#services-section" class="nav-link">Services</a></li>
+
+
+                  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                      <li class="has-children">
+                        <a href="#">More Links</a>
+                        <ul class="dropdown">
+                          <li><a href="#">Menu One</a></li>
+                          <li><a href="#">Menu Two</a></li>
+                          <li><a href="#">Menu Three</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li><a href="#why-us-section" class="nav-link">Why Us</a></li>
+
+                  <li><a href="#testimonials-section" class="nav-link">Testimonials</a></li>
+                  <li><a href="#blog-section" class="nav-link">Blog</a></li>
+                  <li><a href="#contact-section" class="nav-link">Contact</a></li>
+                  <li><a href="index -backup.html" class="nav-link">Why Us1</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+
+      <div class="s-lider">
+
+      
+      <div class="swiper mySwiper">
+        <div class="bg-item"></div>
+        
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/M.png?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+              </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/N.png?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+              </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/T.png?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+             </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/hero_4.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+            </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/hero_5.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+            </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+             <div class="c-card">
+               <figure class="c-card__figure">
+                <img src="assets/images/hero_6.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+             </figure>
+             </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/hero_7.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+            </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/hero_8.jpg?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+            </figure>
+            </div>
+          </div>
+          
+          <div class="swiper-slide">
+            <div class="c-card">
+              <figure class="c-card__figure">
+                <img src="assets/images/M.png?auto=compress&cs=tinysrgb&w=600&lazy=load" />
+            </figure>
+            </div>
+          </div>
+        </div>
+        
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+      <section class="section vision-mission"> <!--Vision & Mission Section Start-->
+        <h2 class="section-title">
+            Vision & Mission
+        </h2> 
+        <div class="column-container">
+          <div class="column column-2 border-right">
+        <!-- Vision Column -->
+        <h5 class="sub-title">Our Vision</h5>
+                  <p class="vision-mission-text">
+                    Our vision is to provide seamless, stress-free experiences 
+                    that leave clients feeling valued, supported and confident in
+                    our unwavering commitment to meeting their needs.
+                  </p>
+          </div>
+          <div class="column column-2">
+        <h5 class="sub-title">Our Mission</h5>
+                  <p class="vision-mission-text">
+                    Our mission is to resolve client inquiries efficiently, 
+                    provide timely updates when needed and ensure consistent 
+                    communication to enhance satisfaction and reduce repeat calls.
+                  </p>
+          </div>
+        </div>
+      </section> <!--Vision & Mission Section end-->
+      
+      <section class="section Why-us"> <!--Why-US Section Start-->
+        <h2 class="section-title">
+          Why Carnival Internet
+        </h2>
+        <div class="column-container">
+          <div class="column column-2 border-right">
+            
+            <h5 class="sub-title" id="title_1" style="text-align: left;"></h5>
+            <p class="text-left" id="description_1"></p>
+            <p></p>
+            <h5 class="sub-title" id="title_2" style="text-align: left;"></h5>
+            <p class="text-left" id="description_2"></p> 
+          </div>
+          <div class="column column-2">
+            <h5 class="sub-title" id="why_1" style="text-align: left;"></h5>
+            <div id="features_1"></div>
+          </div>
+  
+        </div>
+      </section> <!--Why-US Section end-->
+      
+      <section class="section device-infrastructure"><!--Device & Infrastructure Section Start-->
+        <h2 class="section-title">
+          Device & Infrastructure
+        </h2>
+        <div class="column-container">
+          <div class="column column-2 border-right">
+            <p class="text-left" id="infrastructure_1"></p> 
+          </div>
+          <div class="column column-2">
+            <img src="assets/images/wifi-setup.png" alt="Infrastructure Devices">
+          </div>
+        </div>     
+  
+      </section><!--Device & Infrastructure Section end--> 
+      
+      <section class="section"><!--Flow-chart Section Start-->
+        <h2 class="section-title">
+          Service Channel flow
+        </h2>
+        <div class="container-Flow-chart">
+            <div class="sections contact-options" id="contact-options">
+                <h5 style="text-align: center;">Contact Options</h5>
+                <div class="item" id="hotline">Hotline</div>
+                <div class="item" id="email">Email</div>
+                <div class="item" id="sms">SMS</div>
+                <div class="item" id="vivr">VIVR</div>
+                <div class="item" id="whatsapp">WhatsApp</div>
+                <div class="item" id="facebook">Facebook</div>
+                <div class="item" id="self-care">Self-Care</div>
+                <div class="item" id="live-chat">Live Chat</div>
+            </div>
+            <div class="sections contact-center" id="contact-center">
+                <h5 style="text-align: center;">Contact Center</h5>
+                <div class="image-container">
+                    <img src="assets/images/agent.png" alt="agent" style="width: 35%; max-width: 300px;">
+                </div></br></br>
+                <div class="columnss">
+                    <div class="columns">
+                        <div class="item" id="ticket">Ticket</div>
+                    </div>
+                    <div class="columns">
+                        <div class="sub-item solved" id="solved">Solved</div>
+                        <div class="sub-item unresolved" id="unresolved">Unresolved</div>
+                    </div>
+                </div>
+            </div>
+            <div class="sections other-dept" id="other-dept">
+                <h5 style="text-align: center;">Other Dept.</h5>
+                <div class="items-container">
+                    <div class="item" id="transmission">Transmission</div>
+                    <div class="item" id="sde">SDE</div>
+                    <div class="item" id="link-shift">Link Shift</div>
+                    <div class="item" id="lan-support">Lan Support</div>
+                    <div class="item" id="core">Core</div>
+                    <div class="item" id="billing">Billing</div>
+                </div>
+            </div>
+            <div class="sections status" id="status">
+                <img src="assets/images/carnival.svg" alt="carnival" style="display: block; margin: 0 auto; width: 55%; max-width: 300px;"> <br>           
+                <div class="item closed" id="closed">Closed</div><br></br></br><br><br><br><br><br><br>             
+                <div class="item solved" id="solved-2">Solved</div>
+            </div>
+        
+        <svg id="arrows"></svg> 
+      </div>      
+      </section><!--Flow-chart Section end-->
+
+      <section class="section Common-Unique"><!--Common-Unique Section Start-->
+        <h2 class="section-title">
+          Common & Unique script
+        </h2>
+        <div class="column-container">
+          <div class="column column-3">
+            <p class="text-center" id="title_3"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center" id="description_3"></p>
+          </div>
+          <div class="column column-3 border-left border-right">
+            <p class="text-center" id="why_3"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center"  id="features_3"></p> 
+          </div>
+          <div class="column column-3">
+            <p class="text-center" id="title_6"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center"  id="description_6"></p>
+          </div>
+        </div>
+        <div class="column-container">
+          <div class="column column-3 border-top">
+            <p class="text-center"  id="why_6"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center"  id="features_6"></p>          
+          </div>
+          <div class="column column-3 border-left border-right border-top">
+            <p class="text-center"  id="device_6"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center" id="infrastructure_6"></p>          
+          </div>
+          <div class="column column-3 border-top">
+            <p class="text-center" id="device_3"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center" id="infrastructure_3"></p>
+          </div>
+        </div>
+      </section><!--Common-Unique Section end-->
+      
+      <section class="section"><!--Etiquette & Manners Section start-->
+        <h2 class="section-title">
+          Etiquette & Manners
+        </h2>
+        <p class="text-center">We believe that maintaining proper etiquette and manners is essential for 
+          fostering a respectful and professional environment. Here are some guidelines to follow:</p>
+        <div class="column-container">
+          <div class="column column-2">
+            <p class="text-center" id="title_4"></p> 
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center" id="description_4"></p>
+               
+          </div>
+          <div class="column column-2 border-left">
+            <p class="text-center" id="why_4"></p>
+            <div style="margin-top: 10px;"></div>
+            <p class="text-center" id="features_4"></p>
+          </div>
+        </div>
+      </section><!--Etiquette & Manners Section end-->
+      
+      <section class="section Common-Unique"><!--Unique information sharing Section start-->
+        <h2 class="section-title">
+          Unique information sharing
+        </h2>
+        <div class="column-container">
+          <div class="column column-2 border-right">
+            <p class="text-left" id="why_2"></p>
+            <p class="text-left" id="features_2"></p>
+          </div> 
+          <div class="column column-2">
+            <p class="text-left" id="device_2"></p>
+            <p class="text-left" id="infrastructure_2"></p>
+          </div>        
+        </div>
+        <div class="column-container">
+          <div class="column column-2 border-right border-top">
+            <p class="text-left" id="device_4"></p>
+            <p class="text-left" id="infrastructure_4"></p>
+          </div>
+          <div class="column column-2 border-top">
+            <p class="text-left" id="description_5"></p>
+          </div>
+        </div>            
+  
+      </section>
+      
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">
+            Our Office Locations
+          </h2>
+          <div class="table-responsive column-container">
+            <table class="teamsync-table" id="officeAddressTable">  
+              <thead>
+              <!-- Dynamic content will be inserted here -->
+              </thead>
+              <tbody>
+                <!-- Dynamic content will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      
+      <section class="section package">
+        <div class="container">
+          <h2 class="section-title">
+            Our Packages
+          </h2>        
+  
+          <table id="package-table" class="teamsync-table" style="width:100%">
+            <thead>
+              <tr>
+                 <!-- Headers will be dynamically populated -->
+              </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
+      <section class="section">
+        <h2 class="section-title">
+          Do's & Don’ts
+        </h2>        
+        <div class="column-container">
+          <div class="column column-2">
+            <h5 class="sub-title" id="why_5"></h5>
+            <p class="text-left" id="features_5"></p>
+          </div>
+          <div class="column column-2 border-left">
+            <h5 class="sub-title" id="device_5"></h5>
+            <p class="text-left" id="infrastructure_5"></p>
+          </div>
+        </div>    
+    </section> 
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/flow-chart.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.rawgit.com/Keyang/node-csvtojson/d41f44aa/browser/csvtojson.min.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/g-sheet.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+    <script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
+    <script>
+  let swiper = new Swiper(".mySwiper", {
+    slidesPerView: 5,
+    spaceBetween: 30,
+    centeredSlides: true,
+    loop: true,
+    autoplay: {
+      delay: 3000, // Adjust delay as needed
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  });
+  
+  swiper.on('slideChange', function(sld) {
+    document.body.setAttribute('data-sld', sld.realIndex);
+  });
+  
+    </script>
+  
+  
+    
+  </body>
+</html>

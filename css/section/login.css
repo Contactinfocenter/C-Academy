@@ -1,0 +1,179 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Michroma", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #F8F9FA;
+}
+
+.container {
+  color: black; /* Black text */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loading-page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #F8F9FA; /* White background */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  color: black; /* Black text for contrast */
+}
+
+#svg {
+  height: 150px;
+  width: 150px;
+  stroke: black; /* Black stroke for SVG */
+  fill-opacity: 0;
+  stroke-width: 3px;
+  stroke-dasharray: 4500;
+  animation: draw 8s ease;
+}
+
+@keyframes draw {
+  0% {
+      stroke-dashoffset: 4500;
+  }
+  100% {
+      stroke-dashoffset: 0;
+  }
+}
+
+.name-container {
+  height: 30px;
+  overflow: hidden;
+}
+
+.logo-name {
+  color: black; /* Black text for "TeamSync" */
+  font-size: 20px;
+  letter-spacing: 12px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+.logo {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.login-container {
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+/* Input Fields */
+.login-input {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  padding: 8px;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #d9d9d9; /* Light grey */
+  color: #000;
+  text-align: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Input Fields on Focus */
+.login-input:focus {
+border-color: #000; /* Purple border */
+outline: none; /* Removes default outline */
+background-color: #f5edf7; /* Light purple background */
+}
+
+/* Button */
+.login-button {
+display: block;
+width: 100%;
+max-width: 400px;
+padding: 10px;
+margin: 10px auto;
+border: none;
+border-radius: 5px;
+background-color: #000; /* Purple */
+color: white;
+font-size: 16px;
+font-weight: normal;
+text-align: center;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+background-color: #333333; /* Darker purple */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+.login-container {
+padding: 15px; /* Reduce padding for tablets */
+}
+
+.logo {
+width: 60%; /* Adjust logo size */
+margin-bottom: 30px;
+}
+
+.login-input,
+.login-button {
+font-size: 14px; /* Adjust font size for tablets */
+padding: 12px; /* Adjust padding */
+}
+}
+
+@media (max-width: 480px) {
+.login-container {
+padding: 10px; /* Further reduce padding for phones */
+}
+
+.logo {
+width: 70%; /* Adjust logo size for smaller screens */
+margin-bottom: 20px;
+}
+
+.login-input,
+.login-button {
+font-size: 12px; /* Adjust font size for small phones */
+padding: 10px; /* Reduce padding */
+}
+}
+
+.login-button:disabled {
+background-color: #cccccc;
+cursor: not-allowed;
+}
+.message {
+margin-top: 15px;
+font-size: 14px;
+color: red;
+height: 20px;
+}
+#loading {
+display: none;
+margin-top: 15px;
+font-size: 14px;
+color: #007bff;
+}

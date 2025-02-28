@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+
+    <style>
+
+/* Style the form group for better spacing */
+.form-group {
+  margin-bottom: 15px; 
+}
+
+/* Style input fields */
+.form-control {
+  width: 100%; 
+  padding: 10px 12px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 14px;
+  line-height: 1.5; 
+  box-sizing: border-box;
+  height: 40px;
+  display: block;
+}
+
+/* Style select dropdown */
+.form-control select {
+  appearance: none; 
+  background-color: #fff; 
+  padding-right: 30px; 
+  
+}
+
+/* Style input focus */
+.form-control:focus {
+  border-color: #000; 
+  box-shadow: 0 0 1px rgba(0, 0, 0);
+  outline: none; 
+}
+
+/* Style the submit button */
+#submitBtn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+
+    </style>
+
+    <title>TeamSync</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">TeamSync</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link">Tutorial</a></li>
+                  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>
+                  <li><a href="admin.html" class="nav-link active" id="adminOnly">Admin</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+
+      <section class="section">
+        <div class="container">
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <h2>Register</h2>
+              <form id="registrationForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <select id="role" class="form-control" required>
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Contact">Contact</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Audit">Audit</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" value="Register" id="submitBtn">Register</button>
+                </div>
+                <div id="loading" class="text-muted" style="display: none;">Processing...</div>
+              </form>
+            </div>
+            <div class="col-md-8 text-center">
+              <img src="assets/images/img-3.png" alt="onu" class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      
+      
+
+ 
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/flow-chart.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script src="js/sms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+
+
+    <script>
+    const form = document.getElementById('registrationForm');
+    const loading = document.getElementById('loading');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const role = document.getElementById('role').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!name || !email || !role || password.length < 6) {
+        alert('Please fill in all fields and ensure the password is at least 6 characters.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      loading.style.display = 'block';
+
+      try {
+        const hashedPassword = dcodeIO.bcrypt.hashSync(password, 10);
+        const userSnapshot = await db.collection('Users').where('email', '==', email).get();
+
+        if (!userSnapshot.empty) {
+          alert('Email already exists. Please use another email.');
+          return;
+        }
+
+        await db.collection('Users').add({
+          name,
+          email,
+          role,
+          password: hashedPassword,
+          isLoggedIn: false,
+        });
+
+        alert('Registration successful!');
+        form.reset();
+      } catch (error) {
+        console.error('Error:', error.message);
+        alert('Registration failed. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        loading.style.display = 'none';
+      }
+    });
+  </script>
+  
+    
+  </body>
+</html>

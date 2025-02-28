@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <!-- Style -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+
+    <style>
+
+/* Style the form group for better spacing */
+.form-group {
+  margin-bottom: 15px; 
+}
+
+/* Style input fields */
+.form-control {
+  width: 100%; 
+  padding: 10px 12px;
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  font-size: 14px;
+  line-height: 1.5; 
+  box-sizing: border-box;
+  height: 40px;
+  display: block;
+}
+
+/* Style select dropdown */
+.form-control select {
+  appearance: none; 
+  background-color: #fff; 
+  padding-right: 30px; 
+  
+}
+
+/* Style input focus */
+.form-control:focus {
+  border-color: #000; 
+  box-shadow: 0 0 1px rgba(0, 0, 0);
+  outline: none; 
+}
+
+
+
+/* Style the submit button */
+#submitBtn {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+         /* TeamSync Table Styling */
+         .teamsync-table {
+            margin: auto;
+            min-width: 300px;
+            max-width: 100%;
+            border-collapse: collapse;
+        }
+
+        .teamsync-table thead tr {
+            border-top: none;
+            background: #428bca;
+            color: #fff;
+        }
+
+        .teamsync-table tbody tr {
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            background-color: #f5f9fc;
+        }
+
+        .teamsync-table tr:nth-child(even):not(:first-child) {
+            background-color: #ebf3f9;
+        }
+
+        .teamsync-table th {
+            display: none;
+        }
+
+        .teamsync-table td {
+            display: block;
+        }
+
+        .teamsync-table td:first-child {
+            margin-top: 0.5em;
+        }
+
+        .teamsync-table td:last-child {
+            margin-bottom: 0.5em;
+        }
+
+        .teamsync-table td:before {
+            content: attr(data-th) '';
+            font-weight: bold;
+            width: 120px;
+            display: inline-block;
+            color: #000;
+        }
+
+        .teamsync-table th, .teamsync-table td {
+            text-align: left;
+        }
+
+        .teamsync-table {
+            color: #333;
+            border-radius: 0.5em;
+            overflow: hidden;
+        }
+
+        .teamsync-table tr {
+            border-color: #bfbfbf;
+        }
+
+        .teamsync-table th, .teamsync-table td {
+            padding: 0.5em 1em;
+        }
+
+        @media screen and (max-width: 601px) {
+            .teamsync-table tr:nth-child(2) {
+                border-top: none;
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            .teamsync-table tr:hover:not(:first-child) {
+                background-color: #d8e7f3;
+            }
+
+            .teamsync-table td:before {
+                display: none;
+            }
+
+            .teamsync-table th, .teamsync-table td {
+                display: table-cell;
+                padding: 0.25em 0.5em;
+            }
+
+            .teamsync-table th:first-child, .teamsync-table td:first-child {
+                padding-left: 0;
+            }
+
+            .teamsync-table th:last-child, .teamsync-table td:last-child {
+                padding-right: 0;
+            }
+
+            .teamsync-table th, .teamsync-table td {
+                padding: 0.5em !important;
+            }
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #428bca;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 2px;
+        }
+
+        button:hover {
+            background-color: #306aa3;
+        }
+
+        /* Pagination Styling */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        /* Modal Styling */
+/* Prevent Background Scroll When Modal is Open */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow-x: hidden; /* Fix Horizontal Scroll */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: white;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 400px;
+    max-height: 80vh; /* Prevent excessive height */
+    overflow-y: auto; /* Scroll inside the modal if needed */
+    overflow-x: hidden; /* Fix horizontal scrolling */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-sizing: border-box; /* Prevent width issues */
+    position: relative;
+}
+
+/* Close Button */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Input and Select Fields */
+.modal-content label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.modal-content input, 
+.modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Update Button */
+.modal-content .update-btn {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.modal-content .update-btn:hover {
+    background-color: #0056b3;
+}
+
+
+
+    </style>
+        <script type="module">
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+          import { getFirestore, collection, onSnapshot, doc, deleteDoc, updateDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+  
+        const firebaseConfig = {
+        apiKey: "AIzaSyA4mumGvrRZIKsvkzOr66Lq0WvlfDtpbR4",
+        authDomain: "c-academy2025.firebaseapp.com",
+        projectId: "c-academy2025",
+        storageBucket: "c-academy2025.appspot.com",
+        messagingSenderId: "960440577482",
+        appId: "1:960440577482:web:86c2e18ddc2a57ff06f333",
+         };
+  
+          const app = initializeApp(firebaseConfig);
+          const db = getFirestore(app);
+  
+          let usersData = [];
+          const usersPerPage = 5;
+          let currentPage = 1;
+  
+          function loadUsers() {
+              const tableBody = document.getElementById('userTableBody');
+  
+              onSnapshot(collection(db, "Users"), (snapshot) => {
+                  usersData = [];
+                  snapshot.forEach((doc) => {
+                      const user = { id: doc.id, ...doc.data() };
+                      usersData.push(user);
+                  });
+                  displayUsers(usersData);
+              });
+          }
+  
+          function displayUsers(users) {
+              const tableBody = document.getElementById('userTableBody');
+              tableBody.innerHTML = "";
+  
+              const startIndex = (currentPage - 1) * usersPerPage;
+              const endIndex = startIndex + usersPerPage;
+              const paginatedUsers = users.slice(startIndex, endIndex);
+  
+              paginatedUsers.forEach((user) => {
+                  const row = document.createElement("tr");
+                  row.innerHTML = `
+                      <td>${user.name}</td>
+                      <td>${user.email}</td>
+                      <td>${user.role}</td>
+                      <td>
+                          <button onclick="openEditModal('${user.id}', '${user.name}', '${user.email}', '${user.role}')">Edit</button>
+                          <button onclick="openDeleteModal('${user.id}', '${user.name}')">Delete</button>
+                      </td>
+                  `;
+                  tableBody.appendChild(row);
+              });
+  
+              renderPagination(users.length);
+          }
+  
+          function renderPagination(totalUsers) {
+              const paginationContainer = document.querySelector(".pagination");
+              paginationContainer.innerHTML = "";
+  
+              const totalPages = Math.ceil(totalUsers / usersPerPage);
+  
+              for (let i = 1; i <= totalPages; i++) {
+                  const pageButton = document.createElement("button");
+                  pageButton.textContent = i;
+                  pageButton.onclick = () => {
+                      currentPage = i;
+                      displayUsers(usersData);
+                  };
+                  paginationContainer.appendChild(pageButton);
+              }
+          }
+  
+          window.openEditModal = (userId, name, email, role) => {
+              document.getElementById("editUserId").value = userId;
+              document.getElementById("editName").value = name;
+              document.getElementById("editEmail").value = email;
+              document.getElementById("editRole").value = role;
+              document.getElementById("editModal").style.display = "block";
+          };
+  
+          window.closeEditModal = () => {
+              document.getElementById("editModal").style.display = "none";
+          };
+  
+          window.updateUser = () => {
+              document.getElementById("confirmUpdateModal").style.display = "block";
+          };
+  
+          window.confirmUpdate = async () => {
+              const userId = document.getElementById("editUserId").value;
+              const name = document.getElementById("editName").value;
+              const email = document.getElementById("editEmail").value;
+              const role = document.getElementById("editRole").value;
+  
+              if (name.trim() === "" || email.trim() === "" || role.trim() === "") {
+                  alert("Please fill all fields.");
+                  return;
+              }
+  
+              await updateDoc(doc(db, "Users", userId), { name, email, role });
+  
+              document.getElementById("confirmUpdateModal").style.display = "none";
+              closeEditModal();
+          };
+  
+          window.openDeleteModal = (userId, name) => {
+              document.getElementById("deleteUserId").value = userId;
+              document.getElementById("deleteUserName").innerText = name;
+              document.getElementById("deleteModal").style.display = "block";
+          };
+  
+          window.closeDeleteModal = () => {
+              document.getElementById("deleteModal").style.display = "none";
+          };
+  
+          window.confirmDelete = async () => {
+              const userId = document.getElementById("deleteUserId").value;
+  
+              await deleteDoc(doc(db, "Users", userId));
+  
+              document.getElementById("deleteModal").style.display = "none";
+              loadUsers();
+          };
+  
+          window.searchUsers = () => {
+              const searchQuery = document.getElementById("searchInput").value.toLowerCase();
+              const filteredUsers = usersData.filter(user =>
+                  user.name.toLowerCase().includes(searchQuery) ||
+                  user.email.toLowerCase().includes(searchQuery)
+              );
+              displayUsers(filteredUsers);
+          };
+  
+          window.onload = loadUsers;
+      </script>
+
+    <title>C-Academy || Admin</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">C-Academy</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link">Tutorial</a></li>
+            <!--  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>-->
+                  <li><a href="admin.html" class="nav-link active" id="adminOnly">Admin</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+
+      <section class="section">
+        <div class="container">
+          <div class="row mt-3">
+            <div class="col-md-4">
+              <h2>Register</h2>
+              <form id="registrationForm">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="role">Role</label>
+                  <select id="role" class="form-control" required>
+                    <option value="">Select Role</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Contact">Contact</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Audit">Audit</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary" value="Register" id="submitBtn">Register</button>
+                </div>
+                <div id="loading" class="text-muted" style="display: none;">Processing...</div>
+              </form>
+            </div>
+            <div class="col-md-8">
+              <h2>Registered Users</h2>
+
+              <input type="text" class="form-control" id="searchInput" placeholder="Search by name or email..." onkeyup="searchUsers()">
+          <hr>
+              <table class="teamsync-table">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Email</th>
+                          <th>Role</th>
+                          <th>Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody id="userTableBody"></tbody>
+              </table>
+          
+              <div class="pagination"></div>
+          
+<!-- Edit User Modal -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h3>Edit User</h3>
+      <input type="hidden" class="form-control" id="editUserId">
+      
+      <label for="editName">Name:</label>
+      <input type="text" class="form-control" id="editName" placeholder="Enter name">
+
+      <label for="editEmail">Email:</label>
+      <input type="email" class="form-control" id="editEmail" placeholder="Enter email">
+
+      <label for="editRole">Role:</label>
+      <select id="editRole" class="form-control">
+          <option value="">Select Role</option>
+          <option value="Admin">Admin</option>
+          <option value="Contact">Contact</option>
+          <option value="Sales">Sales</option>
+          <option value="Audit">Audit</option>
+      </select>
+
+      <button class="update-btn" onclick="updateUser()">Update</button>
+  </div>
+</div>
+
+          
+              <!-- Update Confirmation Modal -->
+              <div id="confirmUpdateModal" class="modal">
+                  <div class="modal-content">
+                      <h3>Confirm Update</h3>
+                      <p>Are you sure you want to update this user?</p>
+                      <button onclick="confirmUpdate()">Yes</button>
+                      <button onclick="document.getElementById('confirmUpdateModal').style.display='none'">No</button>
+                  </div>
+              </div>
+          
+              <!-- Delete Confirmation Modal -->
+              <div id="deleteModal" class="modal">
+                  <div class="modal-content">
+                      <h3>Confirm Delete</h3>
+                      <p>Are you sure you want to delete <b id="deleteUserName"></b>?</p>
+                      <input type="hidden" id="deleteUserId">
+                      <button onclick="confirmDelete()">Yes</button>
+                      <button onclick="closeDeleteModal()">No</button>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      
+      
+
+ 
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+    <footer class="footer">
+      &copy; 2025 C-Academy. All rights reserved.
+    </footer> 
+
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/flow-chart.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script src="js/sms.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt;
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+    <script src="js/role.js"></script>
+
+
+
+    <script>
+    const form = document.getElementById('registrationForm');
+    const loading = document.getElementById('loading');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const role = document.getElementById('role').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!name || !email || !role || password.length < 6) {
+        alert('Please fill in all fields and ensure the password is at least 6 characters.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      loading.style.display = 'block';
+
+      try {
+        const hashedPassword = dcodeIO.bcrypt.hashSync(password, 10);
+        const userSnapshot = await db.collection('Users').where('email', '==', email).get();
+
+        if (!userSnapshot.empty) {
+          alert('Email already exists. Please use another email.');
+          return;
+        }
+
+        await db.collection('Users').add({
+          name,
+          email,
+          role,
+          password: hashedPassword,
+          isLoggedIn: false,
+        });
+
+        alert('Registration successful!');
+        form.reset();
+      } catch (error) {
+        console.error('Error:', error.message);
+        alert('Registration failed. Please try again.');
+      } finally {
+        submitBtn.disabled = false;
+        loading.style.display = 'none';
+      }
+    });
+  </script>
+  
+    
+  </body>
+</html>

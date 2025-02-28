@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C-Academy || Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.3/gsap.min.js" 
+        integrity="sha512-gmwBmiTVER57N3jYS3LinA9eb8aHrJua5iQD7yqYCKa5x6Jjc7VDVaEA0je0Lu0bP9j7tEjV3+1qUm6loO99Kw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/section/login.css">
+</head>
+<body>
+    <div class="container">
+        
+            <div class="login-container" id="login-container">
+                <p class="logo">Welcome Viewers!</p>         
+                <!-- Email Input -->
+                <input id="email" type="email" class="login-input" placeholder="Email" required>
+            
+                <!-- Password Input -->
+                <input id="password" type="password" class="login-input" placeholder="Password" required>
+            
+                <!-- Login Button -->
+                <button class="login-button" type="submit" id="loginBtn">Log In</button>
+            
+                <!-- Loading and Error Message -->
+                <p id="loading">Loading...</p>
+                <p id="message" class="message"></p>
+            </div>
+    </div>
+
+    <div class="loading-page">
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <path
+                d="M374.1,118.6C334.3,77.7,284.1,56,234.1,56c-101.6,0-180,78.4-180,180s78.4,180,180,180c49.9,0,100.2-21.7,139.9-62.6
+                c8.4-8.8,7.9-23-0.9-31.5c-8.8-8.4-23-7.9-31.5,0.9c-34.3,35.7-73.4,52.6-107.5,52.6c-75.9,0-137.7-61.8-137.7-137.7
+                S158.2,98.3,234.1,98.3c34.1,0,73.2,16.9,107.5,52.6c8.4,8.8,22.6,9.3,31.5,0.9C382,141.6,382.5,127.4,374.1,118.6z" />
+        </svg>
+
+        <div class="name-container">
+            <div class="logo-name">C-Academy</div>
+        </div>
+    </div>
+    <!-- Include bcryptjs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js"></script>
+    <script>
+      window.bcrypt = dcodeIO.bcrypt; // Fix bcrypt not defined issue
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+   
+
+    <script>
+      document.getElementById('email').addEventListener('input', (event) => {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          const emailInput = event.target;
+          if (!emailRegex.test(emailInput.value)) {
+            emailInput.style.borderColor = 'red';
+          } else {
+            emailInput.style.borderColor = '';
+          }
+        });
+    </script>
+  
+    <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyA4mumGvrRZIKsvkzOr66Lq0WvlfDtpbR4",
+  authDomain: "c-academy2025.firebaseapp.com",
+  projectId: "c-academy2025",
+  storageBucket: "c-academy2025.appspot.com",
+  messagingSenderId: "960440577482",
+  appId: "1:960440577482:web:86c2e18ddc2a57ff06f333",
+};
+    
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.firestore();
+    
+      const loginContainer = document.getElementById('login-container');
+      const loginBtn = document.getElementById('loginBtn');
+      const loading = document.getElementById('loading');
+      const message = document.getElementById('message');
+    
+      loginBtn.addEventListener('click', async () => {
+        message.textContent = ''; // Clear previous messages
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+    
+        if (!email || !password) {
+          message.textContent = 'Please fill in both fields.';
+          return;
+        }
+    
+        loginBtn.disabled = true;
+        loading.style.display = 'block';
+    
+        try {
+            // Fetch user data by email
+            const userSnapshot = await db.collection('Users').where('email', '==', email).get();
+
+            if (userSnapshot.empty) {
+              message.textContent = 'Invalid email or password.';
+              return;
+            }
+
+            const userDoc = userSnapshot.docs[0];
+            const userData = userDoc.data();
+
+            // Compare password with hashed password in the database
+            const passwordMatch = dcodeIO.bcrypt.compareSync(password, userData.password);
+
+            if (!passwordMatch) {
+              message.textContent = 'Invalid email or password.';
+              return;
+            }
+
+            // Successful login
+            const userId = userDoc.id;
+
+            // Update Firestore to mark the user as logged in
+            await db.collection('Users').doc(userId).update({
+              isLoggedIn: true,
+            });
+
+            // Store user details in sessionStorage for future reference
+            sessionStorage.setItem(
+              'loggedInUser',
+              JSON.stringify({ id: userId, name: userData.name, role: userData.role })
+            );
+
+            // Show success message in the HTML body
+            message.style.color = 'green';
+            message.textContent = `Welcome, ${userData.name}!`;
+
+            // Redirect to the index page after a delay
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 2000); // 2-second delay
+          } catch (error) {
+            console.error('Error logging in:', error.message);
+            message.textContent = 'An error occurred during login. Please try again.';
+          } finally {
+            loginBtn.disabled = false;
+            loading.style.display = 'none';
+          }
+      });
+    </script>
+  
+    <script>
+        gsap.fromTo(
+            ".loading-page",
+            { opacity: 1 },
+            {
+                opacity: 0,
+                display: "none",
+                duration: 1.5,
+                delay: 3.5,
+            }
+        );
+
+        gsap.fromTo(
+            ".logo-name",
+            {
+                y: 50,
+                opacity: 0,
+            },
+            {
+                y: 0,
+                opacity: 1,
+                duration: 2,
+                delay: 0.5,
+            }
+        );
+    </script>
+</body>
+</html>

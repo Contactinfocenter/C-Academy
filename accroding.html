@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>my sample</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Open+Sans" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<style type="text/css">
+        body {
+                background: #ffffff;
+        }
+        .accordion .card {
+                background: none;
+                border: none;
+        }
+        .accordion .card .card-header {
+                background: none;
+                border: none;
+                padding: .4rem 1rem;
+                font-family: "Roboto", sans-serif;
+        }
+        .accordion .card-header h2 span {
+                float: left;
+                margin-top: 10px;
+        }
+        .accordion .card-header .btn {
+                color: #2f2f31;
+                font-size: 1.04rem;
+                text-align: left;
+                position: relative;
+                font-weight: 500;
+                padding-left: 2rem;
+        }
+        .accordion .card-header i {
+                font-size: 1.2rem;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                top: 9px;
+        }
+        .accordion .card-header .btn:hover {
+                color: #ff8300;
+        }
+        .accordion .card-body {
+                color: #324353;
+                padding: 0.5rem 3rem;
+        }
+        .page-title {
+                margin: 3rem 0 3rem 1rem;
+                font-family: "Arial", sans-serif;
+                position: relative;
+        }
+        .page-title::after {
+                content: "";
+                width: 80px;
+                position: absolute;
+                height: 3px;
+                border-radius: 1px;
+                background: #73bb2b;
+                left: 0;
+                bottom: -15px;
+        }
+        .accordion .highlight .btn {
+                color: #000;
+        }
+        .accordion .highlight i {
+                transform: rotate(180deg);
+        }
+</style>
+<script>
+        $(document).ready(function(){
+                // Add minus icon for collapse element which is open by default
+                $(".collapse.show").each(function(){
+                        $(this).prev(".card-header").addClass("highlight");
+                });
+                
+                // Highlight open collapsed element 
+                $(".card-header .btn").click(function(){
+                        $(".card-header").not($(this).parents()).removeClass("highlight");
+                        $(this).parents(".card-header").toggleClass("highlight");
+                });
+        });
+</script>
+    
+
+</head>
+
+<body>
+<div class="bs-example">
+<div class="container">
+        <div class="row">
+                <div class="col-lg-9">
+                        <h5 class="page-title">IP Phone (FAQs)</h5>
+                        <div class="accordion" id="accordionExample">
+                                <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                                <h2 class="clearfix mb-0">
+                                                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i>What is IP phone?</a>                                                                        
+                                                </h2>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: IP telephony (Internet Protocol telephony) is a general term for the technologies that use the Internet Protocol's packet-switched connections to exchange voice, fax, and other forms of information that have traditionally been carried over the dedicated circuit-switched connections of the public switched telephone network (PSTN). Using the Internet, calls travel as packets of data on shared lines, avoiding the tolls of the PSTN.
+                        </div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"><i class="fa fa-chevron-circle-down"></i>Do I need to purchase other device for IP Phone?</a>
+                                                </h2>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: you can use it as soft phone so no need to purchase IP Phone set, you can use it with your existing mobile handset by downloading Apps (Zopier/ PortSip) from play store/ apple store, for laptop/ desktop you can download Desktop Softphone: pangolin. If you want to use other IP phone set you can.</div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-chevron-circle-down"></i>How can I avail?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: You can take our internet (<b>30 Mbps Unlimited_CTG @1599 for CTG</b> client and <b>30 Mbps Unlimited_IPTV @2099 for Dhaka</b> client) connection with IP phone service without any extra service fee (you will get 200 free munities every months) applicable only <b>new connection</b>. Or you can take it individually where service charge is applicable (***Condition applied).</div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingFour">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i class="fa fa-chevron-circle-down"></i>Is it pre-Paid or Post-paid?</a>                               
+                                                </h2>
+                                        </div>
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: Its prepaid billing for our home user, Post-paid for corporate connection (***Condition applied).</div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingFive">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><i class="fa fa-chevron-circle-down"></i>What is your call rate?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: IP phone to IP phone is free, IP phone to others operator (GP/Banglalink/Robi/ Land phone) 45 paisa/munities (excluding VAT).</div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingSix">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><i class="fa fa-chevron-circle-down"></i>Can I call to abroad/ISD?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: Yes you can call abroad/ISD, but you need to inform us open ISD call.</div>
+                                        </div>
+                                </div>
+                                <div class="card">
+                                        <div class="card-header" id="headingSeven">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven"><i class="fa fa-chevron-circle-down"></i>Can I use my IP Phone multiple device at a time?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: No Sir, you can’t use it multiple devices at a time.</div>
+                                        </div>
+                                </div>
+               
+                <div class="card">
+                                        <div class="card-header" id="headingEight">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight"><i class="fa fa-chevron-circle-down"></i>How can I check my balance?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseEight" class="collapse" aria-labelledby="headingEight" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: You can check your balance by login to your <a href="https://iptsp.carnival.com.bd" target="_blank">admin</a> panel.</div>
+                                        </div>
+                                </div>
+              
+                <div class="card">
+                                        <div class="card-header" id="headingNine">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine"><i class="fa fa-chevron-circle-down"></i>How can I recharge?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseNine" class="collapse" aria-labelledby="headingNine" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: You can recharge from your Admin panel -->Buy Credit-->Online Payment-->Enter Recharge Amount -->PAY ONLINE ….here your recharge amount will add automatically. You can pay via bKash by dialing *247#, in this process you need to inform us for updating you recharge amount.</div>
+                                        </div>
+                                </div>
+                
+              <div class="card">
+                                        <div class="card-header" id="headingTen">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTen" aria-expanded="false" aria-controls="collapseTen"><i class="fa fa-chevron-circle-down"></i>I want to use it in my office for hotline, can I use it?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseTen" class="collapse" aria-labelledby="headingTen" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: If you want to use it as hotline you need to take our corporate connection (***condition applied).</div>
+                                        </div>
+                                </div>  
+                
+                <div class="card">
+                                        <div class="card-header" id="headingEleven">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven"><i class="fa fa-chevron-circle-down"></i>Can I use it with others network?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseEleven" class="collapse" aria-labelledby="headingEleven" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: Yes, you can use it from others network.</div>
+                                        </div>
+                                </div>
+                
+                <div class="card">
+                                        <div class="card-header" id="headingTwelve">
+                                                <h2 class="mb-0">
+                                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve"><i class="fa fa-chevron-circle-down"></i>What is the minimum recharge amount?</a>                     
+                                                </h2>
+                                        </div>
+                                        <div id="collapseTwelve" class="collapse" aria-labelledby="headingTwelve" data-parent="#accordionExample">
+                                                <div class="card-body">Ans: You can recharge minimum 10 taka.</div>
+                                        </div>
+                                </div>
+
+                
+                        </div>
+                </div>
+        </div>
+</div>
+</div>    
+</body>
+</html> 
+ 
