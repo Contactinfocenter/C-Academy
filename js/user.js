@@ -42,3 +42,42 @@ signOutBtn.addEventListener('click', async () => {
 
 // Load user data on page load
 loadUser();
+
+// Role-based content visibility using class selectors
+document.addEventListener('DOMContentLoaded', () => {
+  const loggedInUser = sessionStorage.getItem('loggedInUser');
+
+  if (!loggedInUser) {
+    alert('You must log in to access this page.');
+    window.location.href = 'login.html';
+    return;
+  }
+
+  const { role } = JSON.parse(loggedInUser);
+
+  // Prevent non-admin users from accessing admin.html
+  if (window.location.pathname.includes('admin.html') && role !== 'Admin') {
+    alert('Access denied! Only Admins can view this page.');
+    window.location.href = 'index.html';
+    return;
+  }
+
+  // Role-based content visibility
+  const roleAccess = {
+    adminOnly: ['Admin'],
+    salesOnly: ['Admin', 'Sales'],
+    contactOnly: ['Admin', 'Contact'],
+    auditOnly: ['Audit'],
+    salesAndContact: ['Admin', 'Sales', 'Contact'],
+    salesContactAudit: ['Admin', 'Sales', 'Contact', 'Audit'],
+  };
+
+  Object.keys(roleAccess).forEach((className) => {
+    const elements = document.querySelectorAll(`.${className}`);
+    elements.forEach((element) => {
+      if (!roleAccess[className].includes(role)) {
+        element.style.display = 'none'; // Hide content for unauthorized roles
+      }
+    });
+  });
+});
