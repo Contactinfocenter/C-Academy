@@ -24,6 +24,7 @@ loadCSV("https://docs.google.com/spreadsheets/d/1pLAeOC5eDLSGD1mvcQynU0Hh3qVFLkR
 loadCSV("https://docs.google.com/spreadsheets/d/1pLAeOC5eDLSGD1mvcQynU0Hh3qVFLkRHG2K2gaGgTGs/export?format=csv&gid=1826475109", "referral", "questions", "answer");
 loadCSV("https://docs.google.com/spreadsheets/d/1pLAeOC5eDLSGD1mvcQynU0Hh3qVFLkRHG2K2gaGgTGs/export?format=csv&gid=566104666", "cashback", "questions", "answer");
 loadCSV("https://docs.google.com/spreadsheets/d/1pLAeOC5eDLSGD1mvcQynU0Hh3qVFLkRHG2K2gaGgTGs/export?format=csv&gid=315968778", "supper-saver", "questions", "answer");
+loadCSV("https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/export?format=csv&gid=1069717694", "ip-phone", "questions", "answer");
 
 (function(){
   let settings = {};
