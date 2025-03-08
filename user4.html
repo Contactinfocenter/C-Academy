@@ -317,5 +317,59 @@
             <button onclick="closeDeleteModal()">No</button>
         </div>
     </div>
+<br><hr>
+    <section class="section">
+        <div class="container">
+          <div class="teamsync-table">
+            <table id="data-table">
+                <caption id="table-caption">BDIX/FB/GGC</caption>
+                <thead></thead>
+                <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <script>
+        async function fetchSheetData() {
+            const sheetUrl = "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT A, B, C,D,E";
+
+            try {
+                const response = await fetch(sheetUrl, { cache: "no-store" }); // Avoid cached/stale data
+                const text = await response.text();
+                const json = JSON.parse(text.substring(47).slice(0, -2));
+
+                const rows = json.table.rows;
+                if (!rows.length) return;
+
+                const table = document.getElementById("data-table");
+                const thead = table.querySelector("thead");
+                const tbody = table.querySelector("tbody");
+
+                // Clear previous content
+                thead.innerHTML = "";
+                tbody.innerHTML = "";
+
+                // Populate headers from first row
+                const headerRow = document.createElement("tr");
+                const headers = rows[0].c.map(cell => cell?.v || "");
+                headerRow.innerHTML = headers.map(h => `<th>${h}</th>`).join("");
+                thead.appendChild(headerRow);
+
+                // Populate rows from second row onward
+                const fragment = document.createDocumentFragment(); // Batch DOM updates
+                for (let i = 1; i < rows.length; i++) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = rows[i].c.map(cell => `<td>${cell?.v || ""}</td>`).join("");
+                    fragment.appendChild(tr);
+                }
+                tbody.appendChild(fragment);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", fetchSheetData);
+    </script>
 </body>
 </html>

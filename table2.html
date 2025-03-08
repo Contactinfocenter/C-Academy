@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improved Table Style</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 0;
+        }
+        .teamsync-table {
+            width: 80%;
+            margin: 40px auto;
+            overflow-x: auto;
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+        }
+        th, td {
+            padding: 6px 12px; /* Reduced padding to decrease row height */
+            text-align: center;
+            border: 1px solid #ddd;
+            vertical-align: middle;
+            font-size: 14px;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 2px solid #2980b9;
+        }
+        tr:nth-child(even) {
+            background-color: #f4f9fc;
+        }
+        tr:hover {
+            background-color: #e1f3fc;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        caption {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #2980b9;
+        }
+        .container {
+            padding: 0 20px;
+        }
+        table thead {
+            box-shadow: inset 0 -1px 0 rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <div class="teamsync-table">
+            <table id="data-table">
+                <caption>Home Packages (Regular)</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Package</th>
+                        <th rowspan="2">Price</th>
+                        <th colspan="2">Urban</th>
+                        <th colspan="2">Rural</th>
+                    </tr>
+                    <tr>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="teamsync-table">
+            <table id="data-table1">
+                <caption>Home Packages</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Package</th>
+                        <th rowspan="2">Price</th>
+                        <th colspan="2">Urban</th>
+                        <th colspan="2">Rural</th>
+                    </tr>
+                    <tr>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function fetchSheetData(tableId, sheetUrl) {
+        try {
+            const response = await fetch(sheetUrl, { cache: "no-store" });
+            const text = await response.text();
+            const json = JSON.parse(text.substring(47).slice(0, -2));
+
+            const rows = json.table.rows;
+            if (!rows.length) return;
+
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            tbody.innerHTML = "";
+
+            rows.forEach(row => {
+                const cells = row.c.map(cell => cell?.v || "--");
+                // Filter out rows where all cells are empty or contain only "--"
+                if (cells.some(cell => cell !== "--" && cell !== "")) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = cells.map(cell => `<td>${cell}</td>`).join("");
+                    tbody.appendChild(tr);
+                }
+            });
+        } catch (error) {
+            console.error(`Error fetching data for ${tableId}:`, error);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchSheetData("data-table", "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT A, B, C, D, E, F");
+        fetchSheetData("data-table1", "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT H, I, J, K, L, M");
+    });
+</script>
+
+</body>
+</html>

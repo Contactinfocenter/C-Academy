@@ -161,6 +161,8 @@
             font-size: 24px;
             cursor: pointer;
         }
+
+
     </style>
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
@@ -384,6 +386,103 @@
     background: #0056b3;
 }
 </style>
+
+<section class="section">
+    <div class="container">
+        <div class="teamsync-table">
+            <table id="data-table">
+                <caption id="table-caption">Data Table</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Package</th>
+                        <th colspan="2">Urban</th>
+                        <th colspan="2">Rural</th>
+                    </tr>
+                    <tr id="sub-headers"></tr> <!-- Second header row for BDIX/FB/GGC & Remarks -->
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function fetchSheetData() {
+        const sheetUrl = "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT A, B, C, D, E";
+
+        try {
+            const response = await fetch(sheetUrl, { cache: "no-store" }); // Avoid cached data
+            const text = await response.text();
+            const json = JSON.parse(text.substring(47).slice(0, -2));
+
+            const rows = json.table.rows;
+            if (!rows.length) return;
+
+            const table = document.getElementById("data-table");
+            const subHeaders = document.getElementById("sub-headers");
+            const tbody = table.querySelector("tbody");
+
+            // Clear previous content
+            subHeaders.innerHTML = "";
+            tbody.innerHTML = "";
+
+            // Populate sub-headers (second row)
+            const subHeaderTitles = rows[0].c.map(cell => cell?.v || ""); // Extract sub-header titles
+            subHeaders.innerHTML = subHeaderTitles.slice(1).map(h => `<th>${h}</th>`).join("");
+
+            // Populate rows from second row onward
+            const fragment = document.createDocumentFragment();
+            for (let i = 1; i < rows.length; i++) {
+                const tr = document.createElement("tr");
+                tr.innerHTML = rows[i].c.map(cell => `<td>${cell?.v || ""}</td>`).join("");
+                fragment.appendChild(tr);
+            }
+            tbody.appendChild(fragment);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", fetchSheetData);
+</script>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+    .teamsync-table {
+        width: 80%;
+        margin: 20px auto;
+        overflow-x: auto;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    th, td {
+        padding: 12px;
+        text-align: center; /* Ensures all table cells are centered */
+        border: 1px solid #ddd;
+    }
+    th {
+        background-color: #3498db;
+        color: white;
+        text-align: center; /* Center-aligns headers */
+        vertical-align: middle; /* Ensures vertical centering */
+    }
+    tr:nth-child(even) {
+        background-color: #f2f8fc;
+    }
+    tr:hover {
+        background-color: #d1ecf1;
+        transition: 0.3s;
+    }
+</style>
+
+
 
 </body>
 </html>

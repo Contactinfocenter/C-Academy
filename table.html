@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .teamsync-table {
+            width: 80%;
+            margin: 20px auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 6px 12px; /* Reduced padding for smaller row height */
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            vertical-align: middle;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f8fc;
+        }
+        tr:hover {
+            background-color: #d1ecf1;
+            transition: 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <div class="teamsync-table">
+            <table id="data-table">
+                <caption>Data Table 1</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Package</th>
+                        <th rowspan="2">Price</th>
+                        <th colspan="2">Urban</th>
+                        <th colspan="2">Rural</th>
+                    </tr>
+                    <tr>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="teamsync-table">
+            <table id="data-table1">
+                <caption>Data Table 2</caption>
+                <thead>
+                    <tr>
+                        <th rowspan="2">Package</th>
+                        <th rowspan="2">Price</th>
+                        <th colspan="2">Urban</th>
+                        <th colspan="2">Rural</th>
+                    </tr>
+                    <tr>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                        <th>BDIX/FB/GGC</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    async function fetchSheetData(tableId, sheetUrl) {
+        try {
+            const response = await fetch(sheetUrl, { cache: "no-store" });
+            const text = await response.text();
+            const json = JSON.parse(text.substring(47).slice(0, -2));
+
+            const rows = json.table.rows;
+            if (!rows.length) return;
+
+            const tbody = document.querySelector(`#${tableId} tbody`);
+            tbody.innerHTML = "";
+
+            rows.forEach(row => {
+                const cells = row.c.map(cell => cell?.v || "--");
+                // Filter out rows where all cells are empty or contain only "--"
+                if (cells.some(cell => cell !== "--" && cell !== "")) {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = cells.map(cell => `<td>${cell}</td>`).join("");
+                    tbody.appendChild(tr);
+                }
+            });
+        } catch (error) {
+            console.error(`Error fetching data for ${tableId}:`, error);
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchSheetData("data-table", "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT A, B, C, D, E, F");
+        fetchSheetData("data-table1", "https://docs.google.com/spreadsheets/d/1mW11Mf_wYB6LqicHGs6hB32g3rAPPIWzIvSiwzhru0w/gviz/tq?tqx=out:json&gid=1653998677&tq=SELECT H, I, J, K, L, M");
+    });
+</script>
+
+</body>
+</html>
