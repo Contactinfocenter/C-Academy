@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Package Form</title>
+  <style>
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #f3f5f8;
+      margin: 0;
+      padding: 15px;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin: 15px 0;
+      font-size: 22px;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .form-container {
+      max-width: 850px;
+      background: #fff;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px 25px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 4px;
+      font-size: 13px;
+      color: #444;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 7px 9px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 13px;
+      box-sizing: border-box;
+      transition: 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 3px rgba(0,123,255,0.2);
+      outline: none;
+    }
+
+    .btn {
+      grid-column: span 2;
+      width: 100%;
+      background: #007bff;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn:hover {
+      background: #0056b3;
+    }
+
+    #amountBox {
+      font-weight: bold;
+      background: #f5f7fa;
+      padding: 7px;
+      border-radius: 6px;
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .summary {
+      background: #fff;
+      padding: 15px 18px;
+      border-radius: 10px;
+      margin: 18px auto;
+      border: 1px solid #eee;
+      max-width: 850px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-size: 13px;
+    }
+
+    .summary h3 {
+      margin: 0 0 10px;
+      text-align: center;
+      color: #007bff;
+      font-size: 16px;
+    }
+
+    .summary p {
+      margin: 4px 0;
+      line-height: 1.4;
+    }
+
+    .payment-link {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      width: 100%;
+      background: #25d366;
+      color: white;
+      padding: 9px 0;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+
+    .payment-link:hover {
+      background: #1ebc57;
+    }
+
+    @media (max-width: 650px) {
+      .form-container {
+        grid-template-columns: 1fr;
+      }
+      .btn {
+        grid-column: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Client Info Form</h2>
+
+  <div class="form-container">
+    <div class="form-group">
+      <label>Client ID:</label>
+      <input type="text" id="clientId">
+    </div>
+
+    <div class="form-group">
+      <label>Customer Name:</label>
+      <input type="text" id="customerName">
+    </div>
+
+    <div class="form-group">
+      <label>Contact No:</label>
+      <input type="text" id="contact">
+    </div>
+
+    <div class="form-group">
+      <label>Email:</label>
+      <input type="email" id="email">
+    </div>
+
+    <div class="form-group">
+      <label>Address:</label>
+      <input type="text" id="address">
+    </div>
+
+    <div class="form-group">
+      <label>Desired Package:</label>
+      <select id="package">
+        <option value="">-- Select Package --</option>
+        <option value="1599">75 Mbps Unlimited - 1599</option>
+        <option value="1898">75 Mbps Unlimited_RP - 1898</option>
+        <option value="1999">100 Mbps Unlimited - 1999</option>
+        <option value="2298">100 Mbps Unlimited_RP - 2298</option>
+        <option value="2499">150 Mbps Unlimited - 2499</option>
+        <option value="2798">150 Mbps Unlimited_RP - 2798</option>
+        <option value="2999">200 Mbps Unlimited - 2999</option>
+        <option value="3298">200 Mbps Unlimited_RP - 3298</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Wants to use:</label>
+      <select id="months">
+        <option value="">-- Select Duration --</option>
+        <option value="12">12 Months</option>
+        <option value="6">6 Months</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Amount:</label>
+      <div id="amountBox">0</div>
+    </div>
+
+    <div class="form-group hidden" id="emiSection">
+      <label>EMI:</label>
+      <select id="emi">
+        <option value="">-- Select EMI --</option>
+        <option value="No">No</option>
+        <option value="3">3</option>
+        <option value="6">6</option>
+        <option value="9">9</option>
+        <option value="12">12</option>
+      </select>
+    </div>
+
+    <div class="form-group hidden" id="bankSection">
+      <label>Bank:</label>
+      <select id="bank">
+        <option value="">-- Select Bank --</option>
+        <option>City Bank</option>
+        <option>BRAC Bank</option>
+        <option>EBL</option>
+        <option>MTBL</option>
+        <option>SCB</option>
+        <option>UCB</option>
+        <option>DHAKA Bank</option>
+        <option>DBBL</option>
+        <option>LankaBangla</option>
+      </select>
+    </div>
+
+    <button class="btn" onclick="generateSummary()">Submit</button>
+  </div>
+
+  <div id="summarySection" class="summary hidden">
+    <h3>Request Summary</h3>
+    <p><strong>Client ID:</strong> <span id="sClientId"></span></p>
+    <p><strong>Name:</strong> <span id="sCustomerName"></span></p>
+    <p><strong>Contact:</strong> <span id="sContact"></span></p>
+    <p><strong>Email:</strong> <span id="sEmail"></span></p>
+    <p><strong>Address:</strong> <span id="sAddress"></span></p>
+    <p><strong>Package:</strong> <span id="sPackage"></span></p>
+    <p><strong>Amount:</strong> <span id="sAmount"></span></p>
+    <p><strong>EMI:</strong> <span id="sEmi"></span></p>
+    <p><strong>Bank:</strong> <span id="sBank"></span></p>
+    <p><strong id="paymentText"></strong></p>
+  </div>
+
+  <script>
+    const packageSelect = document.getElementById('package');
+    const monthsSelect = document.getElementById('months');
+    const amountBox = document.getElementById('amountBox');
+    const emiSection = document.getElementById('emiSection');
+    const emiSelect = document.getElementById('emi');
+    const bankSection = document.getElementById('bankSection');
+
+    function updateAmount() {
+      const pkg = parseFloat(packageSelect.value);
+      const months = monthsSelect.value;
+
+      if (pkg && months) {
+        let total = months === "12" ? pkg * 10 : pkg * 5;
+        amountBox.textContent = total.toLocaleString();
+        emiSection.classList.toggle('hidden', months !== "12");
+      } else {
+        amountBox.textContent = "0";
+        emiSection.classList.add('hidden');
+        bankSection.classList.add('hidden');
+      }
+    }
+
+    packageSelect.addEventListener('change', updateAmount);
+    monthsSelect.addEventListener('change', updateAmount);
+
+    emiSelect.addEventListener('change', () => {
+      bankSection.classList.toggle('hidden', !emiSelect.value);
+    });
+
+    function generateSummary() {
+      const clientId = document.getElementById('clientId').value;
+      const customerName = document.getElementById('customerName').value;
+      const contact = document.getElementById('contact').value;
+      const email = document.getElementById('email').value;
+      const address = document.getElementById('address').value;
+      const pkgText = packageSelect.options[packageSelect.selectedIndex].text;
+      const amount = amountBox.textContent;
+      const emi = emiSelect.value || "N/A";
+      const bank = document.getElementById('bank').value || "N/A";
+      const months = monthsSelect.value;
+
+      let paymentMessage = months === "12" ? "Need payment link for 10+2" :
+                           months === "6" ? "Need payment link for 5+1" :
+                           "Need payment link";
+
+      document.getElementById('sClientId').textContent = clientId;
+      document.getElementById('sCustomerName').textContent = customerName;
+      document.getElementById('sContact').textContent = contact;
+      document.getElementById('sEmail').textContent = email;
+      document.getElementById('sAddress').textContent = address;
+      document.getElementById('sPackage').textContent = pkgText;
+      document.getElementById('sAmount').textContent = amount;
+      document.getElementById('sEmi').textContent = emi;
+      document.getElementById('sBank').textContent = bank;
+      document.getElementById('paymentText').textContent = paymentMessage;
+
+      const summaryText = 
+`Client ID: ${clientId}
+Customer Name: ${customerName}
+Contact: ${contact}
+Email: ${email}
+Address: ${address}
+Package: ${pkgText}
+Amount: ${amount} BDT
+EMI: ${emi}
+Bank: ${bank}
+${paymentMessage}`;
+
+      const whatsappNumber = "8801953819309";
+      const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(summaryText)}`;
+
+      let existingButton = document.getElementById('whatsappLink');
+      if (!existingButton) {
+        const whatsappBtn = document.createElement('a');
+        whatsappBtn.id = "whatsappLink";
+        whatsappBtn.href = whatsappURL;
+        whatsappBtn.className = "payment-link";
+        whatsappBtn.textContent = "Send via WhatsApp";
+        whatsappBtn.target = "_blank";
+        document.getElementById('summarySection').appendChild(whatsappBtn);
+      } else {
+        existingButton.href = whatsappURL;
+      }
+
+      document.getElementById('summarySection').classList.remove('hidden');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
