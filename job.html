@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Job Assignment</title>
+</head>
+<body>
+<form id="jobForm">
+<select id="name"></select>
+<input type="text" id="phone" readonly>
+<input type="text" id="jobNumber">
+<input type="text" id="jobType">
+<input type="text" id="area">
+<button id="submitBtn">Assign</button>
+</form>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbwcTYeqyHHwxKWlE6dxmdqRtGyw1NqI0hXIlP76vEz30NpCHEyCKxCWudl-sSV8ulNG/exec";
+
+// Load members
+fetch(API_URL + "?action=getMembers")
+  .then(r => r.json())
+  .then(members => {
+    const sel = document.getElementById('name');
+    sel.innerHTML = '<option value="">Select</option>';
+    members.forEach(m => {
+      const opt = document.createElement('option');
+      opt.value = m.name;
+      opt.dataset.phone = m.phone;
+      opt.textContent = m.name;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', () => {
+      document.getElementById('phone').value = sel.selectedOptions[0].dataset.phone || '';
+    });
+  });
+
+document.getElementById('submitBtn').addEventListener('click', e => {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('name').value,
+    phone: document.getElementById('phone').value,
+    jobNumber: document.getElementById('jobNumber').value,
+    jobType: document.getElementById('jobType').value,
+    area: document.getElementById('area').value
+  };
+  
+  fetch(API_URL, {
+    method: 'POST',
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(res => window.open(res.waLink, "_blank"))
+  .catch(err => alert(err));
+});
+</script>
+</body>
+</html>
