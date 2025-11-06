@@ -1,143 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8"/>
 <title>Job Assignment</title>
-<style>
-  body {
-    font-family: 'Poppins', Arial, sans-serif;
-    background: #f5f6fa;
-    padding: 30px;
-    color: #333;
-  }
-  form {
-    max-width: 400px;
-    background: white;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-  }
-  label {
-    display: block;
-    margin-top: 15px;
-    font-weight: 600;
-  }
-  input, select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-  }
-  button {
-    margin-top: 20px;
-    padding: 10px;
-    width: 100%;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-  }
-  button:hover {
-    background: #0056b3;
-  }
-  .success {
-    margin-top: 10px;
-    color: green;
-    font-weight: bold;
-  }
-  .error {
-    margin-top: 10px;
-    color: red;
-    font-weight: bold;
-  }
-</style>
 </head>
 <body>
+  <h3>Assign Job</h3>
+  <form id="jobForm">
+    <label>Name</label>
+    <select id="name" required></select><br/>
+    <label>Phone</label>
+    <input id="phone" readonly /><br/>
+    <label>Job No</label>
+    <input id="jobNumber" required /><br/>
+    <label>Job Type</label>
+    <input id="jobType" required /><br/>
+    <label>Area</label>
+    <input id="area" required /><br/>
+    <button type="submit">Assign</button>
+  </form>
 
-<h2>Assign a Job</h2>
-<form id="jobForm">
-  <label>Name</label>
-  <select id="name" required></select>
-
-  <label>Phone</label>
-  <input type="text" id="phone" readonly>
-
-  <label>Job Number</label>
-  <input type="text" id="jobNumber" required>
-
-  <label>Job Type</label>
-  <input type="text" id="jobType" required>
-
-  <label>Area</label>
-  <input type="text" id="area" required>
-
-  <button type="submit">Assign Job</button>
-  <div id="statusMsg"></div>
-</form>
+  <pre id="debug" style="white-space:pre-wrap; background:#f8f8f8; padding:10px; margin-top:10px;"></pre>
 
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbyZUjjrinTWgA11KKMPiFJsviS2TAi4AIoYRyzumZrcEcr2i7zwDydsu9WYRjNurc3M/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbxdukP_2qrFFlDcgHEIA_dAX9xphuIZINUXSyKgECN1M5i-upEEWWymCIoJKcxF_GR1/exec"; // ← REPLACE
 
-// === Load team members ===
+const debug = (msg) => {
+  console.log(msg);
+  document.getElementById('debug').textContent += msg + "\n";
+};
+
+// Load members
 fetch(API_URL + "?action=getMembers")
-  .then(res => res.json())
+  .then(r => r.json())
   .then(members => {
+    debug("GET members OK: " + JSON.stringify(members));
     const sel = document.getElementById('name');
-    sel.innerHTML = '<option value="">Select Member</option>';
+    sel.innerHTML = '<option value="">-- Select --</option>';
     members.forEach(m => {
       const opt = document.createElement('option');
       opt.value = m.name;
       opt.dataset.phone = m.phone;
-      opt.textContent = m.name;
+      opt.textContent = m.name + (m.phone ? ' ('+m.phone+')' : '');
       sel.appendChild(opt);
     });
-
     sel.addEventListener('change', () => {
-      const selected = sel.selectedOptions[0];
-      document.getElementById('phone').value = selected?.dataset.phone || '';
+      const s = sel.selectedOptions[0];
+      document.getElementById('phone').value = s ? (s.dataset.phone || '') : '';
     });
   })
   .catch(err => {
-    document.getElementById('statusMsg').textContent = 'Error loading team: ' + err.message;
-    document.getElementById('statusMsg').className = 'error';
+    debug("GET members failed: " + err.message);
   });
 
-// === Handle form submit ===
-document.getElementById('jobForm').addEventListener('submit', e => {
+// Submit form
+document.getElementById('jobForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-
-  const data = {
+  const payload = {
     name: document.getElementById('name').value,
     phone: document.getElementById('phone').value,
     jobNumber: document.getElementById('jobNumber').value,
     jobType: document.getElementById('jobType').value,
     area: document.getElementById('area').value
   };
+  debug("Posting: " + JSON.stringify(payload));
 
-  fetch(API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(result => {
-    if (result.waLink) {
-      document.getElementById('statusMsg').textContent = "✅ Job assigned successfully!";
-      document.getElementById('statusMsg').className = 'success';
-      window.open(result.waLink, "_blank");
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+
+    const text = await res.text();
+    debug("Raw response status: " + res.status + ", body: " + text);
+
+    let data;
+    try { data = JSON.parse(text); } catch (e) { throw new Error('Invalid JSON response'); }
+
+    if (data.waLink) {
+      debug("Got waLink: " + data.waLink);
+      window.open(data.waLink, "_blank");
       document.getElementById('jobForm').reset();
       document.getElementById('phone').value = '';
     } else {
-      throw new Error(result.error || "Unknown error");
+      throw new Error(data.error || 'Unknown error from server');
     }
-  })
-  .catch(err => {
-    document.getElementById('statusMsg').textContent = "❌ Error: " + err.message;
-    document.getElementById('statusMsg').className = 'error';
-  });
+  } catch (err) {
+    debug("POST failed: " + err.message);
+  }
 });
 </script>
 </body>
