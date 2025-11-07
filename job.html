@@ -3,134 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Job Assignment</title>
+<title>Ticket Assignment</title>
 <style>
   * {
     box-sizing: border-box;
   }
 
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* 🚫 Prevents both vertical and horizontal scrollbars */
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(145deg, #e8eff7, #f8fafc);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures full viewport height */
+  padding: 0; /* Remove padding to avoid extra scroll */
+}
+
+.container {
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  padding: 28px 24px;
+  width: 100%;
+  max-width: 420px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+h2 {
+  margin-top: 0;
+  color: #222;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  margin: 15px 0 6px;
+  font-weight: 500;
+  color: #444;
+  font-size: 14px;
+}
+
+input, select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #f9fafc;
+}
+
+input:focus, select:focus {
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74,144,226,0.15);
+  background: #fff;
+}
+
+select {
+  cursor: pointer;
+}
+
+button {
+  margin-top: 25px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  background: linear-gradient(135deg, #4A90E2, #357ABD);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: linear-gradient(135deg, #3f7ccc, #2f68a8);
+  transform: translateY(-1px);
+}
+
+.message {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight: 500;
+  display: none;
+  text-align: center;
+  font-size: 14px;
+}
+
+.success {
+  background: #E6F7E6;
+  color: #2E7D32;
+}
+
+.error {
+  background: #FFEBEE;
+  color: #C62828;
+}
+
+/* Mobile-friendly spacing */
+@media (max-width: 480px) {
   body {
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(145deg, #e8eff7, #f8fafc);
-    display: flex;
-    justify-content: center;
+    padding: 0;
     align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 15px;
   }
 
   .container {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    padding: 28px 24px;
-    width: 100%;
-    max-width: 420px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .container:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    padding: 24px 18px;
+    border-radius: 18px;
   }
 
   h2 {
-    margin-top: 0;
-    color: #222;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: 20px;
   }
 
-  label {
-    display: block;
-    margin: 15px 0 6px;
-    font-weight: 500;
-    color: #444;
+  input, select, button {
     font-size: 14px;
   }
+}
 
-  input, select {
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    font-size: 15px;
-    outline: none;
-    transition: all 0.2s ease;
-    background: #f9fafc;
-  }
-
-  input:focus, select:focus {
-    border-color: #4A90E2;
-    box-shadow: 0 0 0 3px rgba(74,144,226,0.15);
-    background: #fff;
-  }
-
-  select {
-    cursor: pointer;
-  }
-
-  button {
-    margin-top: 25px;
-    width: 100%;
-    padding: 14px;
-    font-size: 16px;
-    font-weight: 500;
-    background: linear-gradient(135deg, #4A90E2, #357ABD);
-    color: #fff;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-
-  button:hover {
-    background: linear-gradient(135deg, #3f7ccc, #2f68a8);
-    transform: translateY(-1px);
-  }
-
-  .message {
-    margin-top: 20px;
-    padding: 12px;
-    border-radius: 10px;
-    font-weight: 500;
-    display: none;
-    text-align: center;
-    font-size: 14px;
-  }
-
-  .success {
-    background: #E6F7E6;
-    color: #2E7D32;
-  }
-
-  .error {
-    background: #FFEBEE;
-    color: #C62828;
-  }
-
-  /* Mobile-friendly spacing */
-  @media (max-width: 480px) {
-    body {
-      padding: 10px;
-      align-items: center;
-    }
-
-    .container {
-      padding: 24px 18px;
-      border-radius: 18px;
-    }
-
-    h2 {
-      font-size: 20px;
-    }
-
-    input, select, button {
-      font-size: 14px;
-    }
-  }
 </style>
 </head>
 <body>
