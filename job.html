@@ -1,95 +1,233 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Job Assignment</title>
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(145deg, #e8eff7, #f8fafc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .container {
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    padding: 28px 24px;
+    width: 100%;
+    max-width: 420px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    margin-top: 0;
+    color: #222;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+  }
+
+  label {
+    display: block;
+    margin: 15px 0 6px;
+    font-weight: 500;
+    color: #444;
+    font-size: 14px;
+  }
+
+  input, select {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.2s ease;
+    background: #f9fafc;
+  }
+
+  input:focus, select:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 0 3px rgba(74,144,226,0.15);
+    background: #fff;
+  }
+
+  select {
+    cursor: pointer;
+  }
+
+  button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #4A90E2, #357ABD);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  button:hover {
+    background: linear-gradient(135deg, #3f7ccc, #2f68a8);
+    transform: translateY(-1px);
+  }
+
+  .message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 500;
+    display: none;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .success {
+    background: #E6F7E6;
+    color: #2E7D32;
+  }
+
+  .error {
+    background: #FFEBEE;
+    color: #C62828;
+  }
+
+  /* Mobile-friendly spacing */
+  @media (max-width: 480px) {
+    body {
+      padding: 10px;
+      align-items: center;
+    }
+
+    .container {
+      padding: 24px 18px;
+      border-radius: 18px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    input, select, button {
+      font-size: 14px;
+    }
+  }
+</style>
 </head>
 <body>
-  <h3>Assign Job</h3>
+
+<div class="container">
+  <h2>Assign Ticket</h2>
   <form id="jobForm">
-    <label>Name</label>
-    <select id="name" required></select><br/>
-    <label>Phone</label>
-    <input id="phone" readonly /><br/>
-    <label>Job No</label>
-    <input id="jobNumber" required /><br/>
-    <label>Job Type</label>
-    <input id="jobType" required /><br/>
-    <label>Area</label>
-    <input id="area" required /><br/>
-    <button type="submit">Assign</button>
+    <label for="name">Name</label>
+    <select id="name" required>
+      <option value="">-- Select Member --</option>
+    </select>
+
+    <label for="phone">Phone</label>
+    <input id="phone" type="text" readonly placeholder="Auto-filled phone number" />
+
+    <label for="jobNumber">Ticket Number</label>
+    <input id="jobNumber" type="text" placeholder="Enter Ticket Number" required />
+
+    <label for="jobType">Ticket Type</label>
+    <input id="jobType" type="text" placeholder="Enter Ticket Type" required />
+
+    <label for="area">Area</label>
+    <input id="area" type="text" placeholder="Enter Area" required />
+
+    <button type="submit">Assign Ticket</button>
   </form>
 
-  <pre id="debug" style="white-space:pre-wrap; background:#f8f8f8; padding:10px; margin-top:10px;"></pre>
+  <div id="message" class="message"></div>
+</div>
 
 <script>
-const API_URL = "https://script.google.com/macros/s/AKfycbz-Bk1LxvJyMG8Sf0ZvJUcoQVe_DO1aEPYsUbLP3go2WOHRGBJ_uULzr_w5areDdqNw/exec"; // ← REPLACE
+const API_URL = "https://script.google.com/macros/s/AKfycbztPWmcp-w5fJ4zWdUZUVIBwim48dg18rxG9_szQ9mhUewF9AgFAwd6D81VBAYpA1nk/exec"; 
 
-const debug = (msg) => {
-  console.log(msg);
-  document.getElementById('debug').textContent += msg + "\n";
-};
+const form = document.getElementById('jobForm');
+const nameSelect = document.getElementById('name');
+const phoneInput = document.getElementById('phone');
+const messageDiv = document.getElementById('message');
 
-// Load members
+// --- Load team members ---
 fetch(API_URL + "?action=getMembers")
-  .then(r => r.json())
+  .then(res => res.json())
   .then(members => {
-    debug("GET members OK: " + JSON.stringify(members));
-    const sel = document.getElementById('name');
-    sel.innerHTML = '<option value="">-- Select --</option>';
-    members.forEach(m => {
-      const opt = document.createElement('option');
-      opt.value = m.name;
-      opt.dataset.phone = m.phone;
-      opt.textContent = m.name + (m.phone ? ' ('+m.phone+')' : '');
-      sel.appendChild(opt);
+    members.forEach(member => {
+      const option = document.createElement('option');
+      option.value = member.name;
+      option.dataset.phone = member.phone;
+      option.textContent = member.name + (member.phone ? ` (${member.phone})` : '');
+      nameSelect.appendChild(option);
     });
-    sel.addEventListener('change', () => {
-      const s = sel.selectedOptions[0];
-      document.getElementById('phone').value = s ? (s.dataset.phone || '') : '';
+
+    nameSelect.addEventListener('change', () => {
+      const selected = nameSelect.selectedOptions[0];
+      phoneInput.value = selected ? selected.dataset.phone : '';
     });
   })
-  .catch(err => {
-    debug("GET members failed: " + err.message);
-  });
+  .catch(err => showMessage('Failed to load team members: ' + err.message, 'error'));
 
-// Submit form
-document.getElementById('jobForm').addEventListener('submit', async (e) => {
+// --- Form submit ---
+form.addEventListener('submit', async e => {
   e.preventDefault();
-  const payload = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
+  messageDiv.style.display = 'none';
+
+  const formData = new URLSearchParams({
+    name: nameSelect.value,
+    phone: phoneInput.value,
     jobNumber: document.getElementById('jobNumber').value,
     jobType: document.getElementById('jobType').value,
     area: document.getElementById('area').value
-  };
-  debug("Posting: " + JSON.stringify(payload));
+  });
 
   try {
     const res = await fetch(API_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: formData
     });
 
-    const text = await res.text();
-    debug("Raw response status: " + res.status + ", body: " + text);
-
-    let data;
-    try { data = JSON.parse(text); } catch (e) { throw new Error('Invalid JSON response'); }
+    const data = await res.json();
 
     if (data.waLink) {
-      debug("Got waLink: " + data.waLink);
-      window.open(data.waLink, "_blank");
-      document.getElementById('jobForm').reset();
-      document.getElementById('phone').value = '';
+      showMessage('✅ Job assigned successfully! Opening WhatsApp...', 'success');
+      window.open(data.waLink, '_blank');
+      form.reset();
+      phoneInput.value = '';
     } else {
-      throw new Error(data.error || 'Unknown error from server');
+      showMessage(data.error || 'Unknown error from server', 'error');
     }
   } catch (err) {
-    debug("POST failed: " + err.message);
+    showMessage('Failed to assign job: ' + err.message, 'error');
   }
 });
+
+function showMessage(msg, type) {
+  messageDiv.textContent = msg;
+  messageDiv.className = 'message ' + type;
+  messageDiv.style.display = 'block';
+}
 </script>
 </body>
 </html>
