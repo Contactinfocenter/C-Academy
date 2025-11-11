@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">  
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/section/section.css">
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    
+    <style>
+      .faq {
+        background-color: #FEFEFA;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th, td {
+        text-align: left;
+        padding: 10px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+
+      /* ✅ Filter Container */
+      .filters-wrapper {
+        margin-bottom: 20px;
+      }
+      .filters-title {
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .filters label {
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+      }
+      .filters select {
+        padding: 6px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        max-width: 200px;
+      }
+      div.dataTables_filter {
+        margin-top: 10px;
+      }
+
+
+      @media screen and (max-width: 768px) {
+        .filters {
+          flex-direction: column;
+        }
+        .filters select {
+          width: 100%;
+        }
+        table {
+          font-size: 14px;
+        }
+      }
+
+
+#dataTable.dataTable tbody th,
+#dataTable.dataTable tbody td {
+  padding: 6px 12px;   
+  line-height: 1.2;    
+}
+
+
+#dataTable.dataTable thead th {
+  padding: 10px 12px;
+  line-height: 1.2;
+}
+
+
+#dataTable {
+  font-size: 15px;
+}
+
+
+.filters select {
+  padding: 6px 8px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+
+@media (max-width: 768px) {
+  #dataTable.dataTable tbody td {
+    padding: 10px 14px;
+  }
+  .filters {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .filters select {
+    width: 100%;
+  }
+}
+
+
+
+    </style>
+
+    <title>C-Academy</title>
+  </head>
+  <body>
+
+
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close mt-3">
+            <span class="icon-close2 js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+
+
+      <div class="top-bar">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <a href="#" class="">
+                <span class="mr-2  icon-envelope-open-o"></span> 
+                <span class="d-none d-md-inline-block">
+                  info@carnival.com.bd
+                </span>
+              </a>
+              <span class="mx-md-2 d-inline-block"></span>
+              <a href="#" class="">
+                <span class="mr-2  icon-phone"></span> 
+                  <span class="d-none d-md-inline-block">
+                    09642363693
+                  </span>
+              </a>
+
+
+              <div class="float-right">
+
+                <a class="" id="userName"><span class="mr-2"></span> <span class="d-none d-md-inline-block" ></span></a>
+                <span class="mx-md-2 d-inline-block"></span>
+                <a href="#" class="" id="signOutBtn"><span class="mr-2  icon-sign-out"></span> <span class="d-none d-md-inline-block">Sign Out</span></a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+
+        <div class="container">
+          <div class="row align-items-center position-relative">
+
+
+            <div class="site-logo">
+              <a href="index.html" class="text-black"><span class="text-primary">C-Academy</a>
+            </div>
+
+            <div class="col-12">
+              <nav class="site-navigation text-right ml-auto " role="navigation">
+
+                <ul class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
+                  <li><a href="index.html" class="nav-link">HOME</a></li>
+                  <li><a href="Faq.html" class="nav-link">FAQ</a></li>
+                  <li><a href="Sms.html" class="nav-link contactOnly">SMS</a></li>
+                  <li><a href="Sla.html" class="nav-link contactOnly">SLA</a></li>
+                  <li><a href="Process.html" class="nav-link contactOnly">Process</a></li>
+                  <li><a href="Offers.html" class="nav-link">Offers</a></li>
+                  <li><a href="Tutorials.html" class="nav-link contactOnly">Tutorial</a></li>
+                  <li><a href="mediation.html" class="nav-link active">Mediation</a></li>
+            <!--  <li class="has-children">
+                    <a href="#about-section" class="nav-link">About Us</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#team-section" class="nav-link">Team</a></li>
+                      <li><a href="#pricing-section" class="nav-link">Pricing</a></li>
+                      <li><a href="#faq-section" class="nav-link">FAQ</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="zone.html" class="nav-link">Zone</a></li>-->
+                  <li><a href="admin.html" class="nav-link adminOnly">Admin</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+            <div class="toggle-button d-inline-block d-lg-none"><a href="#" class="site-menu-toggle py-5 js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+          </div>
+        </div>
+
+      </header>
+
+      <section class="section faq">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-12 col-md-6">
+                <!-- Filter Dropdowns -->
+                  <div class="filters" id="filterContainer"></div>
+
+                <!-- DataTable -->
+                  <table id="dataTable" class="display responsive nowrap"></table>
+            </div>
+
+          </div>
+        </div>
+      </section><!-- End FAQ Section -->
+
+      <footer class="footer">
+        &copy; 2025 C-Academy. All rights reserved.
+      </footer>   
+    
+    <button id="scrollToTopBtn" title="Go to top">Scroll to Top</button>     
+        
+ 
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- DataTables -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+    <!-- Other scripts -->
+    <script src="js/scrollToTopBtn.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/user.js"></script>
+
+   
+    <script>
+    $(document).ready(function () {
+      const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSz4ArArOxyYmfKOKm-LEaWZ_rag9GuV9IFbaukiM8AIAeGLYp2NJDKm9mbXuK4P_-g2Ea7HB9Gbmbm/pub?gid=0&single=true&output=csv";
+
+      function parseCSV(text) {
+        const rows = [];
+        let row = [], cell = '';
+        let insideQuotes = false;
+
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i], next = text[i + 1];
+          if (char === '"' && insideQuotes && next === '"') {
+            cell += '"'; i++;
+          } else if (char === '"') {
+            insideQuotes = !insideQuotes;
+          } else if (char === ',' && !insideQuotes) {
+            row.push(cell); cell = '';
+          } else if (char === '\n' && !insideQuotes) {
+            row.push(cell); rows.push(row); row = []; cell = '';
+          } else {
+            cell += char;
+          }
+        }
+        if (cell || row.length) row.push(cell);
+        if (row.length) rows.push(row);
+        return rows;
+      }
+
+      fetch(sheetUrl)
+        .then(res => res.text())
+        .then(csv => {
+          const rows = parseCSV(csv.trim());
+          const headers = rows[0];
+          const data = rows.slice(1);
+
+          const selectedIndexes = [0, 2, 3, 5];
+          const selectedHeaders = selectedIndexes.map(i => headers[i] || "");
+          const filteredData = data.map(row => selectedIndexes.map(i => row[i] || ""));
+
+          const thead = "<thead><tr>" + selectedHeaders.map(h => `<th>${h}</th>`).join("") + "</tr></thead>";
+          const tbody = "<tbody>" + filteredData.map(r => "<tr>" + r.map(c => `<td>${c}</td>`).join("") + "</tr>").join("") + "</tbody>";
+
+          document.getElementById("dataTable").innerHTML = thead + tbody;
+
+          //Initialize DataTable
+          const table = $('#dataTable').DataTable({
+            responsive: true,
+            pageLength: 10,
+            lengthMenu: [5, 10, 25, 50],
+            initComplete: function () {
+              const api = this.api();
+              const filterContainer = document.getElementById('filterContainer');
+              filterContainer.innerHTML = '';
+
+              api.columns().every(function (index) {
+                const column = this;
+                const label = document.createElement('label');
+                label.textContent = selectedHeaders[index] + ": ";
+                const select = document.createElement('select');
+                select.innerHTML = '<option value="">All</option>';
+                select.addEventListener('change', function () {
+                  const val = $.fn.dataTable.util.escapeRegex(this.value);
+                  column.search(val ? '^' + val + '$' : '', true, false).draw();
+                });
+                column.data().unique().sort().each(function (d) {
+                  if (d && d.trim()) {
+                    const option = document.createElement('option');
+                    option.value = d;
+                    option.textContent = d;
+                    select.appendChild(option);
+                  }
+                });
+                label.appendChild(select);
+                filterContainer.appendChild(label);
+              });
+            }
+          });
+        })
+        .catch(err => console.error("Error loading sheet data:", err));
+    });
+    </script>
+
+    
+  </body>
+</html>
