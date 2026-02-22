@@ -237,6 +237,8 @@
       <label>Desired Package:</label>
       <select id="package">
         <option value="">-- Select Package --</option>
+        <option value="1099">50 Mbps_City - 1099</option>
+        <option value="1398">50 Mbps_City_RP - 1398</option>
         <option value="1599">75 Mbps Unlimited - 1599</option>
         <option value="1898">75 Mbps Unlimited_RP - 1898</option>
         <option value="1999">100 Mbps Unlimited - 1999</option>
@@ -333,9 +335,13 @@
     packageSelect.addEventListener('change', updateAmount);
     monthsSelect.addEventListener('change', updateAmount);
 
-    emiSelect.addEventListener('change', () => {
-      bankSection.classList.toggle('hidden', !emiSelect.value);
-    });
+emiSelect.addEventListener('change', () => {
+  if (emiSelect.value && emiSelect.value !== "No") {
+    bankSection.classList.remove('hidden');
+  } else {
+    bankSection.classList.add('hidden');
+  }
+});
 
     function generateSummary() {
       const clientId = document.getElementById('clientId').value;
